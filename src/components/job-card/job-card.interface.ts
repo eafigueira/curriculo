@@ -1,3 +1,19 @@
-export interface CardProperties {
-    title: string, position: string, description: string, startDate: string, endDate: string
+import { ReactNode } from "react"
+
+export interface JobCardProperties {
+    company: string
+    city: string
+    position: string 
+    startDate: string 
+    endDate: string
+    children?: ReactNode
+}
+
+export interface JobProjectsProperties {
+    children?: ReactNode
+}
+
+export interface JobProjectProperties {
+    description: string
+    stacks: string[]
 }

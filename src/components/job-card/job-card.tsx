@@ -1,13 +1,27 @@
-import { CardProperties } from "./job-card.interface";
+import { JobCardProperties, JobProjectProperties, JobProjectsProperties } from "./job-card.interface";
 
-export function JobCard({ title, position, description, startDate, endDate }: CardProperties) {
+export function JobCard({ company, city, position, startDate, endDate, children }: JobCardProperties) {
     return <div className="job-card">
-        <div className="position">{position}</div>
-        <div className="title">{title}</div>
-        <div className="description">{description}</div>
-        <div className="period">
-            <div className="start-date">{startDate}</div>
-            <div className="end-date">{endDate}</div>
+        <div className="company-city-box">
+            <div className="company">{company}</div>
+            <div className="city">{city}</div>
         </div>
+        <div className="position-period-box">
+            <div className="position">{position}</div>
+            <div className="period">{startDate} a {endDate}</div>
+        </div>
+        {children}
+    </div>
+}
+
+export function JobProjects({ children }: JobProjectsProperties) {
+    return <div className="job-projects">
+        {children}
+    </div>
+}
+
+export function JobProject({ description, stacks }: JobProjectProperties) {
+    return <div className="job-project">
+        <div className="description">{description}</div>
     </div>
 }

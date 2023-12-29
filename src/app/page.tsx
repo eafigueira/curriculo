@@ -1,4 +1,4 @@
-import { JobCard } from "@/components/job-card/job-card"
+import { JobCard, JobProject, JobProjects } from "@/components/job-card/job-card"
 
 export default function Home() {
   return (
@@ -6,29 +6,22 @@ export default function Home() {
       <div className="left">
       </div>
       <div className="right">
-        <JobCard title="Frigorifico chapecó"
+        <JobCard
+          company="Frigorifico chapecó"
           position="Estagiário"
-          description="Auxiliava na correção de bugs em decorrência da virada do século, e criação de relatórios"
           startDate="01/1999"
+          city="Chapecó"
           endDate="01/2001">
-        </JobCard>
-        <JobCard title="Frigorifico chapecó"
-          position="Estagiário"
-          description="Auxiliava na correção de bugs em decorrência da virada do século, e criação de relatórios"
-          startDate="01/1999"
-          endDate="01/2001">
-        </JobCard>
-        <JobCard title="Frigorifico chapecó"
-          position="Estagiário"
-          description="Auxiliava na correção de bugs em decorrência da virada do século, e criação de relatórios"
-          startDate="01/1999"
-          endDate="01/2001">
-        </JobCard>
-        <JobCard title="Frigorifico chapecó"
-          position="Estagiário"
-          description="Auxiliava na correção de bugs em decorrência da virada do século, e criação de relatórios"
-          startDate="01/1999"
-          endDate="01/2001">
+          <JobProjects>
+            <JobProject
+              description="Atuação na correção do bug do milênio, convertendo o padrão de input de datas"
+              stacks={["PICK BASIC", "UNIDATA"]}
+            />
+            <JobProject
+              description="Manutenção no modulo de mercado externo, criando relatórios"
+              stacks={["PICK BASIC", "UNIDATA"]}
+            />
+          </JobProjects>
         </JobCard>
       </div>
     </div>
