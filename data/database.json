@@ -1,0 +1,201 @@
+[
+    {
+        "name": "Emerson Figueira",
+        "birth-date": "09/12/1980",
+        "contacts": [
+            {
+                "type": "EMAIL",
+                "contact": "eafigueira@gmail.com"
+            },
+            {
+                "type": "X",
+                "contact": "@eafigueira"
+            }
+        ],
+        "jobs": [
+            {
+                "company": "Figrorifico chapecó",
+                "position": "Estagiário",
+                "period": [
+                    {
+                        "start-date": "01/1999",
+                        "end-date": "01/2001"
+                    }
+                ],
+                "city": "Chapecó",
+                "projects": [
+                    {
+                        "description": "Correção de bugs e criação de relatórios",
+                        "stack": [
+                            "PICK BASIC",
+                            "UNIDATA"
+                        ]
+                    }
+                ]
+            },
+            {
+                "company": "SENSEDIA S.A.",
+                "position": "Backend developer",
+                "period": [
+                    {
+                        "start-date": "03/2022"
+                    }
+                ],
+                "city": "Campinas",
+                "projects": [
+                    {
+                        "description": "Projeto para emissão de boletos e compensação via PIX",
+                        "stack": [
+                            "NODEJS",
+                            "NESTJS",
+                            "KUBERNETES",
+                            "REDIS",
+                            "RABBITMQ",
+                            "POSTGRES"
+                        ]
+                    },
+                    {
+                        "description": "Middleware de pagamento, responsável pela orquestração interna do cliente do processo de pagamento",
+                        "stack": [
+                            "JAVA",
+                            "SPRING-BOOT",
+                            "MYSQL",
+                            "KUBERNETES",
+                            "AWS",
+                            "AWS-SQS",
+                            "DYNAMODB"
+                        ]
+                    },
+                    {
+                        "description": "Desenvolvimento de APIS para atender a fase I do open insurance",
+                        "stack": [
+                            "JAVA",
+                            "SPRING-BOOT",
+                            "ORACLE",
+                            "JENKINS"
+                        ]
+                    },
+                    {
+                        "description": "Desenvolvimento de APIS para atender ao processo de automação do fluxo de solicitação de equipamento POS",
+                        "stack": [
+                            "NODEJS",
+                            "NESTJS",
+                            "ORACLE",
+                            "JENKINS"
+                        ]
+                    }
+                ]
+            },
+            {
+                "company": "ZUP I.T. SERVICOS TECNOLOGIA E INOVACAO S.A.",
+                "position": "Backend developer",
+                "period": [
+                    {
+                        "start-date": "06/2021",
+                        "end-date": "02/2022"
+                    }
+                ],
+                "city": "Uberlandia",
+                "projects": [
+                    {
+                        "description": "Plataforma de integração entre, transportadores rodoviários e empresas de trem",
+                        "stack": [
+                            "KOTLIN",
+                            "SPRING-BOOT",
+                            "POSTGRES",
+                            "GCP"
+                        ]
+                    },
+                    {
+                        "description": "Migração de base de dados de clientes de base legada para nova arquitetura, aproximadamente 60M de clientes",
+                        "stack": [
+                            "JAVA",
+                            "SPRING-BOOT",
+                            "POSTGRES",
+                            "AWS",
+                            "AWS-SQS",
+                            "APACHE-KAFKA"
+                        ]
+                    }
+                ]
+            },
+            {
+                "company": "UNIMED CHAPECO - COOPERATIVA DE TRABALHO MEDICO DA REGIAO OESTE CATARINENSE",
+                "position": "Analista de sistemas",
+                "period": [
+                    {
+                        "start-date": "03/2012",
+                        "end-date": "03/2017"
+                    }
+                ],
+                "city": "Chapecó",
+                "projects": [
+                    {
+                        "description": "Desenvolvimento de softwares internos para auxiliar a cooperativa, e suporte aos usuários",
+                        "stack": [
+                            "ORACLE",
+                            "JAVA",
+                            "NODEJS"
+                        ]
+                    }
+                ]
+            },
+            {
+                "company": "SGI SISTEMAS LTDA",
+                "position": "Developer",
+                "period": [
+                    {
+                        "start-date": "11/2009",
+                        "end-date": "11/2010"
+                    },
+                    {
+                        "start-date": "08/2002",
+                        "end-date": "04/2004"
+                    }
+                ],
+                "city": "Chapecó",
+                "projects": [
+                    {
+                        "description": "Desenvolvimento de software no segmento varegista",
+                        "stack": [
+                            "DATAFLEX"
+                        ]
+                    }
+                ]
+            },
+            {
+                "company": "Z2R SISTEMAS",
+                "position": "CTO",
+                "period": [
+                    {
+                        "start-date": "03/2017",
+                        "end-date": "02/2021"
+                    }
+                ],
+                "city": "Balneário camboriu",
+                "projects": [
+                    {
+                        "description": "Desenvolvimento de software para arquivamento de prontuários médicos",
+                        "stack": [
+                            "JAVA",
+                            "NODEJS",
+                            "REACT",
+                            "GCP",
+                            "MYSQL"
+                        ]
+                    },
+                    {
+                        "description": "Desenvolvimento de CRM para revendas de TELECOM",
+                        "stack": [
+                            "JAVA",
+                            "NODEJS",
+                            "REACT",
+                            "GCP",
+                            "MYSQL"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

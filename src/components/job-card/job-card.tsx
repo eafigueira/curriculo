@@ -21,7 +21,5 @@ export function JobProjects({ children }: JobProjectsProperties) {
 }
 
 export function JobProject({ description, stacks }: JobProjectProperties) {
-    return <div className="job-project">
-        <div className="description">{description}</div>
-    </div>
+    return <li className="description">{description}</li>
 }

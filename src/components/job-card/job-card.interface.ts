@@ -1,6 +1,6 @@
 import { ReactNode } from "react"
 
-export interface JobCardProperties {
+export interface JobCardProperties{
     company: string
     city: string
     position: string 

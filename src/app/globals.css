@@ -1,63 +1,67 @@
-body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+.main {
+  display: flex;
+  gap: 10px;
+  width: 200mm;
+  height: 287mm;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  height: 100vh;
-  background-color: #f0f0f0;
-}
-
-.page {
-  display: flex;
-  width: 210mm;
-  height: 297mm;
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #F1E9E2;
+  padding: 10px;
 }
 
 .left {
-  width: 25%;
-  background-color: #ddd;
+  flex: 0 0 30%;
+  background-color: #60A3DA;
+
 }
 
 .right {
   flex-grow: 1;
-  background-color: #eee;
+  background-color: #fbfeff;
+  padding: 10px;
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
 .job-card {
-  border-color: red;
-  border-width: 1px;
-  padding-bottom: 10px;
+  background-color: #fbfeff;
+  border-bottom: 1px solid #000;
 
   .company-city-box {
-    color: #6c6f71;
     display: flex;
-  }
-  .company {
-    font-size: large;
-    font-weight: bold;
-    flex: 1;
-  }
-  .city {
-    font-weight: normal;
-    font-style: italic;
-  }
-  .position-period-box {
-    display: flex;
-  }
-  .position {
-    flex: 1;
-    font-weight: normal;
-    font-style: italic;
-  }
-  .period {
-    color: #6c6f71;
-    font-weight: normal;
-    font-style: italic;
   }
 
+  .company {
+    flex: 1;
+    font-size: larger;
+    color: #8f8f8f;
+  }
+
+  .city {
+    font-size: small;
+    color: #8f8f8f;
+  }
+
+  .position-period-box {
+    display: flex;
+
+    .position {
+      flex: 1;
+    }
+
+    .period {}
+  }
+
+  .job-projects {
+    .description {
+      font-size: smaller;
+      font-weight: 400;
+      padding-left: 30px
+    }
+  }
+}
+
+.job-card:last-of-type {
+  border-bottom: none;
 }
