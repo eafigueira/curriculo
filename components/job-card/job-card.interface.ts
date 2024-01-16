@@ -1,11 +1,14 @@
 import { ReactNode } from "react"
 
-export interface JobCardProperties{
+export interface JobPeriod {
+    startDate: string
+    endDate: string
+}
+export interface JobCardProperties {
     company: string
     city: string
-    position: string 
-    startDate: string 
-    endDate: string
+    position: string
+    period: JobPeriod[]
     children?: ReactNode
 }
 

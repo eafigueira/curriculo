@@ -1,7 +1,7 @@
 [
     {
         "name": "Emerson Figueira",
-        "birth-date": "09/12/1980",
+        "birthDate": "09/12/1980",
         "contacts": [
             {
                 "type": "EMAIL",
@@ -18,8 +18,8 @@
                 "position": "Estagiário",
                 "period": [
                     {
-                        "start-date": "01/1999",
-                        "end-date": "01/2001"
+                        "startDate": "01/1999",
+                        "endDate": "01/2001"
                     }
                 ],
                 "city": "Chapecó",
@@ -38,7 +38,7 @@
                 "position": "Backend developer",
                 "period": [
                     {
-                        "start-date": "03/2022"
+                        "startDate": "03/2022"
                     }
                 ],
                 "city": "Campinas",
@@ -91,8 +91,8 @@
                 "position": "Backend developer",
                 "period": [
                     {
-                        "start-date": "06/2021",
-                        "end-date": "02/2022"
+                        "startDate": "06/2021",
+                        "endDate": "02/2022"
                     }
                 ],
                 "city": "Uberlandia",
@@ -124,8 +124,8 @@
                 "position": "Analista de sistemas",
                 "period": [
                     {
-                        "start-date": "03/2012",
-                        "end-date": "03/2017"
+                        "startDate": "03/2012",
+                        "endDate": "03/2017"
                     }
                 ],
                 "city": "Chapecó",
@@ -145,12 +145,12 @@
                 "position": "Developer",
                 "period": [
                     {
-                        "start-date": "11/2009",
-                        "end-date": "11/2010"
+                        "startDate": "11/2009",
+                        "endDate": "11/2010"
                     },
                     {
-                        "start-date": "08/2002",
-                        "end-date": "04/2004"
+                        "startDate": "08/2002",
+                        "endDate": "04/2004"
                     }
                 ],
                 "city": "Chapecó",
@@ -168,8 +168,8 @@
                 "position": "CTO",
                 "period": [
                     {
-                        "start-date": "03/2017",
-                        "end-date": "02/2021"
+                        "startDate": "03/2017",
+                        "endDate": "02/2021"
                     }
                 ],
                 "city": "Balneário camboriu",

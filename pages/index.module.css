@@ -1,0 +1,26 @@
+.main {
+  display: flex;
+  gap: 10px;
+  width: 200mm;
+  height: 287mm;
+  margin: 0;
+  padding: 0;
+  background-color: #F1E9E2;
+  padding: 10px;
+}
+
+.left {
+  flex: 0 0 30%;
+  background-color: #60A3DA;
+
+}
+
+.right {
+  flex-grow: 1;
+  background-color: #fbfeff;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
