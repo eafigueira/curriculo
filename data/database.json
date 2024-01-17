@@ -14,12 +14,12 @@
         ],
         "jobs": [
             {
-                "company": "Figrorifico chapecó",
+                "company": "FRIGORIFICO CHAPECÓ",
                 "position": "Estagiário",
                 "period": [
                     {
                         "startDate": "01/1999",
-                        "endDate": "01/2001"
+                        "endDate": "03/2002"
                     }
                 ],
                 "city": "Chapecó",
@@ -67,11 +67,23 @@
                         ]
                     },
                     {
+                        "description": "Checkout transparente para input de cartão, convertendo a transação para uma e-wallet",
+                        "stack": [
+                            "JAVA",
+                            "SPRING-BOOT",
+                            "MYSQL",
+                            "KUBERNETES",
+                            "AWS",
+                            "AWS-SQS",
+                            "DYNAMODB"
+                        ]
+                    },
+                    {
                         "description": "Desenvolvimento de APIS para atender a fase I do open insurance",
                         "stack": [
                             "JAVA",
                             "SPRING-BOOT",
-                            "ORACLE",
+                            "SQLSERVER",
                             "JENKINS"
                         ]
                     },
@@ -120,7 +132,7 @@
                 ]
             },
             {
-                "company": "UNIMED CHAPECO - COOPERATIVA DE TRABALHO MEDICO DA REGIAO OESTE CATARINENSE",
+                "company": "UNIMED CHAPECO",
                 "position": "Analista de sistemas",
                 "period": [
                     {
@@ -191,6 +203,109 @@
                             "NODEJS",
                             "REACT",
                             "GCP",
+                            "MYSQL"
+                        ]
+                    }
+                ]
+            },
+            {
+                "company": "HEXTOR SISTEMAS LTDA",
+                "position": "Developer",
+                "period": [
+                    {
+                        "startDate": "06/2008",
+                        "endDate": "02/2009"
+                    }
+                ],
+                "city": "Chapecó",
+                "projects": [
+                    {
+                        "description": "Desenvolvimento de sistema para bares e restaurantes",
+                        "stack": [
+                            "DELPHI",
+                            "SQLSERVER"
+                        ]
+                    }
+                ]
+            },
+            {
+                "company": "JB SOFTWARE LTDA",
+                "position": "Developer",
+                "period": [
+                    {
+                        "startDate": "11/2004",
+                        "endDate": "04/2005"
+                    }
+                ],
+                "city": "Pinhalzinho",
+                "projects": [
+                    {
+                        "description": "Desenvolvimento de sistema de recursos humanos",
+                        "stack": [
+                            "DELPHI",
+                            "FIREBIRD"
+                        ]
+                    }
+                ]
+            },
+            {
+                "company": "UNINFO SISTEMAS LTDA",
+                "position": "Developer",
+                "period": [
+                    {
+                        "startDate": "04/2002",
+                        "endDate": "08/2002"
+                    }
+                ],
+                "city": "Chapecó",
+                "projects": [
+                    {
+                        "description": "Desenvolvimento de ERP comercial",
+                        "stack": [
+                            "DELPHI",
+                            "FIREBIRD"
+                        ]
+                    }
+                ]
+            },
+            {
+                "company": "NM INFORMATICA LTDA",
+                "position": "CTO",
+                "period": [
+                    {
+                        "startDate": "05/2005",
+                        "endDate": "05/2008"
+                    }
+                ],
+                "city": "Chapecó",
+                "projects": [
+                    {
+                        "description": "Desenvolvimento de sistema hospitalar",
+                        "stack": [
+                            "DELPHI",
+                            "FIREBIRD",
+                            "MYSQL",
+                            "JAVA"
+                        ]
+                    }
+                ]
+            },
+            {
+                "company": "FREELANCER",
+                "position": "Developer",
+                "period": [
+                    {
+                        "startDate": "12/2010",
+                        "endDate": "02/2012"
+                    }
+                ],
+                "city": "Chapecó",
+                "projects": [
+                    {
+                        "description": "Desenvolvimento de CRM para revendas de TELECOM",
+                        "stack": [
+                            "JAVA",
+                            "ACTION-SCRIPT",
                             "MYSQL"
                         ]
                     }
