@@ -1,14 +1,14 @@
-const dados = require('./data/database.json')
+const dados = require('../data/database.json')
 
 function formatarDataAtualParaString() {
     const dataAtual = new Date();
-    const mes = String(dataAtual.getMonth() + 1).padStart(2, '0'); // +1 porque os meses em JavaScript começam do 0
+    const mes = String(dataAtual.getMonth() + 1).padStart(2, '0');
     const ano = dataAtual.getFullYear();
     return `${mes}/${ano}`;
 }
 function formatarData(dataString) {
     const [mes, ano] = dataString.split('/').map(Number);
-    return new Date(ano, mes - 1); // -1 porque os meses em JavaScript começam do 0
+    return new Date(ano, mes - 1);
 }
 
 function criarLinhaDoTempo(dataInicial) {

@@ -1,41 +1,49 @@
 .card {
-    background-color: #fbfeff;
-    border-bottom: 1px solid #000;
-  
-    .companyCityBox {
-      display: flex;
-    }
-  
-    .company {
+  background-color: #fbfeff;
+  border-bottom: 1px solid #000;
+
+  .companyCityBox {
+    display: flex;
+  }
+
+  .company {
+    flex: 1;
+    font-size: larger;
+    color: #8f8f8f;
+  }
+
+  .city {
+    font-size: small;
+    color: #8f8f8f;
+  }
+
+  .positionPeriodBox {
+    display: flex;
+
+    .position {
       flex: 1;
-      font-size: larger;
-      color: #8f8f8f;
     }
-  
-    .city {
-      font-size: small;
-      color: #8f8f8f;
-    }
-  
-    .position-period-box {
+
+    .period {
+      flex: 1;
       display: flex;
-  
-      .position {
-        flex: 1;
-      }
-  
-      .period {}
     }
-  
-    .jobProjects {
-      .description {
-        font-size: smaller;
-        font-weight: 400;
-        padding-left: 30px
-      }
+
+    .item {
+      text-align: right;
+      flex: 1;
     }
   }
-  
-  .card:last-of-type {
-    border-bottom: none;
+
+  .jobProjects {
+    .description {
+      font-size: smaller;
+      font-weight: 400;
+      padding-left: 30px
+    }
   }
+}
+
+.card:last-of-type {
+  border-bottom: none;
+}

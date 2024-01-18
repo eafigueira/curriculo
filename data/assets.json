@@ -1,0 +1,107 @@
+[
+    {
+        "type": "stacks",
+        "data": [
+            {
+                "name": "PICK-BASIC",
+                "type": "LANGUAGE"
+            },
+            {
+                "name": "UNIDATA",
+                "type": "DATABASE"
+            },
+            {
+                "name": "NODEJS",
+                "type": "LANGUAGE"
+            },
+            {
+                "name": "NESTJS",
+                "type": "FRAMEWORK"
+            },
+            {
+                "name": "KUBERNETES",
+                "type": "TOOL"
+            },
+            {
+                "name": "REDIS",
+                "type": "TOOL"
+            },
+            {
+                "name": "RABBITMQ",
+                "type": "TOOL"
+            },
+            {
+                "name": "POSTGRES",
+                "type": "DATABASE"
+            },
+            {
+                "name": "JAVA",
+                "type": "LANGUAGE"
+            },
+            {
+                "name": "SPRING-BOOT",
+                "type": "FRAMEWORK"
+            },
+            {
+                "name": "MYSQL",
+                "type": "DATABASE"
+            },
+            {
+                "name": "AWS",
+                "type": "CLOUD"
+            },
+            {
+                "name": "AWS-SQS",
+                "type": "TOOL"
+            },
+            {
+                "name": "DYNAMODB",
+                "type": "DATABASE"
+            },
+            {
+                "name": "SQLSERVER",
+                "type": "DATABASE"
+            },
+            {
+                "name": "JENKINS",
+                "type": "TOOL"
+            },
+            {
+                "name": "ORACLE",
+                "type": "DATABASE"
+            },
+            {
+                "name": "KOTLIN",
+                "type": "LANGUAGE"
+            },
+            {
+                "name": "GCP",
+                "type": "CLOUD"
+            },
+            {
+                "name": "APACHE-KAFKA",
+                "type": "TOOL"
+            },
+            {
+                "name": "DATAFLEX",
+                "type": "LANGUAGE"
+            },
+            {
+                "name": "REACT",
+                "type": "FRAMEWORK"
+            },
+            {
+                "name": "DELPHI",
+                "type": "LANGUAGE"
+            },
+            {
+                "name": "FIREBIRD",
+                "type": "DATABASE"
+            },
+            {
+                "name": "ACTION-SCRIPT",
+                "type": "LANGUAGE"
+            }
+        ]
+    }
+]

@@ -9,7 +9,7 @@ export function JobCard({ company, city, position, period, children }: JobCardPr
         </div>
         <div className={styles.positionPeriodBox}>
             <div className={styles.position}>{position}</div>
-            <div className={styles.period}>{period[0].startDate} a {period[0].endDate}</div>
+            <JobPeriod period={period} />
         </div>
         {children}
     </div>
@@ -21,6 +21,14 @@ export function JobProjects({ children }: JobProjectsProperties) {
     </div>
 }
 
-export function JobProject({ description, stacks }: JobProjectProperties) {
+export function JobProject({ description }: JobProjectProperties) {
     return <li className={styles.description}>{description}</li>
+}
+
+export function JobPeriod({ period }: any) {
+    return <div className={styles.period}>
+        {period.map((item: any, index: number) =>
+            <div key={item.startDate+item.endDate} className={styles.item}>{item.startDate} a {item.endDate}</div>
+        )}
+    </div>
 }

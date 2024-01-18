@@ -40,7 +40,20 @@ function sumaryTimeByStack(jobs: any[]) {
   return Object.entries(stackTempo).map(([stack, tempoTotal]) => ({ stack, tempoTotal }));
 }
 
-export default function handler(req: any, res: any) {
-  const users = data.map(user => ({ ...user, sumary: sumaryTimeByStack(user.jobs) }))
-  res.status(200).json(users);
+function parseDate(dateString: string): Date {
+  const [month, year] = dateString.split('/').map(Number);
+  return new Date(year, month - 1);
+}
+
+export default function handler(req: Request, res: any) {
+  if (req.method === 'GET') {
+    const users = data.map(user => ({ ...user, sumary: sumaryTimeByStack(user.jobs) }))
+    data.forEach(user => {
+      user.jobs.sort((a, b) => parseDate(a.period[0].startDate).getMilliseconds() - parseDate(b.period[0].startDate).getMilliseconds());
+    });
+    res.status(200).json(users);
+  } else {
+    res.setHeader('Allow', ['GET']);
+    res.status(405).end(`Método ${req.method} Não Permitido`);
+  }
 }

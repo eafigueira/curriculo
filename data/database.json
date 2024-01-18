@@ -25,9 +25,9 @@
                 "city": "Chapecó",
                 "projects": [
                     {
-                        "description": "Correção de bugs e criação de relatórios",
+                        "description": "Atuei na correção de bugs e na criação de relatórios.",
                         "stack": [
-                            "PICK BASIC",
+                            "PICK-BASIC",
                             "UNIDATA"
                         ]
                     }
@@ -44,7 +44,7 @@
                 "city": "Campinas",
                 "projects": [
                     {
-                        "description": "Projeto para emissão de boletos e compensação via PIX",
+                        "description": "Participei no desenvolvimento de um sistema integrado para emissão de boletos e compensação de pagamentos via PIX, visando a automação do processo de faturamento e melhoria da eficiência operacional.",
                         "stack": [
                             "NODEJS",
                             "NESTJS",
@@ -55,7 +55,7 @@
                         ]
                     },
                     {
-                        "description": "Middleware de pagamento, responsável pela orquestração interna do cliente do processo de pagamento",
+                        "description": "Colaborei na implementação de um middleware de pagamento, focando na orquestração dos processos internos de pagamento e na integração de sistemas. Participei na otimização do fluxo de pagamento e na implementação de protocolos de segurança.",
                         "stack": [
                             "JAVA",
                             "SPRING-BOOT",
@@ -67,7 +67,7 @@
                         ]
                     },
                     {
-                        "description": "Checkout transparente para input de cartão, convertendo a transação para uma e-wallet",
+                        "description": "Trabalhei no desenvolvimento de um checkout transparente para cartões, contribuindo para a conversão de transações em e-wallets e reforçando a segurança dos dados.",
                         "stack": [
                             "JAVA",
                             "SPRING-BOOT",
@@ -79,7 +79,7 @@
                         ]
                     },
                     {
-                        "description": "Desenvolvimento de APIS para atender a fase I do open insurance",
+                        "description": "Desenvolvi APIs para a fase I do open insurance, focando na criação de interfaces seguras para compartilhamento de dados de seguros e colaborando com equipes de conformidade.",
                         "stack": [
                             "JAVA",
                             "SPRING-BOOT",
@@ -88,7 +88,7 @@
                         ]
                     },
                     {
-                        "description": "Desenvolvimento de APIS para atender ao processo de automação do fluxo de solicitação de equipamento POS",
+                        "description": "Participei no desenvolvimento de APIs para automatizar o processo de solicitação de equipamentos POS, melhorando a eficiência operacional e a experiência do usuário.",
                         "stack": [
                             "NODEJS",
                             "NESTJS",
@@ -99,7 +99,7 @@
                 ]
             },
             {
-                "company": "ZUP I.T. SERVICOS TECNOLOGIA E INOVACAO S.A.",
+                "company": "ZUP I.T.",
                 "position": "Backend developer",
                 "period": [
                     {
@@ -110,7 +110,7 @@
                 "city": "Uberlandia",
                 "projects": [
                     {
-                        "description": "Plataforma de integração entre, transportadores rodoviários e empresas de trem",
+                        "description": "Contribuí no desenvolvimento de uma plataforma de integração entre transportadores rodoviários e empresas ferroviárias, focando na sincronização e otimização de operações logísticas.",
                         "stack": [
                             "KOTLIN",
                             "SPRING-BOOT",
@@ -119,7 +119,7 @@
                         ]
                     },
                     {
-                        "description": "Migração de base de dados de clientes de base legada para nova arquitetura, aproximadamente 60M de clientes",
+                        "description": "Auxiliei na migração de uma base de dados de clientes, transferindo cerca de 60 milhões de registros para uma arquitetura mais moderna e eficiente.",
                         "stack": [
                             "JAVA",
                             "SPRING-BOOT",
@@ -143,7 +143,7 @@
                 "city": "Chapecó",
                 "projects": [
                     {
-                        "description": "Desenvolvimento de softwares internos para auxiliar a cooperativa, e suporte aos usuários",
+                        "description": "Trabalhei no desenvolvimento e implementação de soluções de software para otimizar processos internos, contribuindo para a eficiência operacional e fornecendo suporte técnico aos usuários.",
                         "stack": [
                             "ORACLE",
                             "JAVA",
@@ -168,7 +168,7 @@
                 "city": "Chapecó",
                 "projects": [
                     {
-                        "description": "Desenvolvimento de software no segmento varegista",
+                        "description": "Participei no desenvolvimento de software para o segmento varejista, focando na melhoria das operações de negócios e na experiência do cliente.",
                         "stack": [
                             "DATAFLEX"
                         ]
@@ -187,7 +187,7 @@
                 "city": "Balneário camboriu",
                 "projects": [
                     {
-                        "description": "Desenvolvimento de software para arquivamento de prontuários médicos",
+                        "description": "Participei na criação de uma solução para arquivamento de prontuários médicos, melhorando a gestão de informações de saúde e a eficiência operacional em ambientes clínicos.",
                         "stack": [
                             "JAVA",
                             "NODEJS",
@@ -197,7 +197,7 @@
                         ]
                     },
                     {
-                        "description": "Desenvolvimento de CRM para revendas de TELECOM",
+                        "description": "Contribuí no desenvolvimento de um CRM para revendas de TELECOM.",
                         "stack": [
                             "JAVA",
                             "NODEJS",
@@ -220,7 +220,7 @@
                 "city": "Chapecó",
                 "projects": [
                     {
-                        "description": "Desenvolvimento de sistema para bares e restaurantes",
+                        "description": "Desenvolvi um sistema para bares e restaurantes, visando melhorar a gestão e o processamento de operações.",
                         "stack": [
                             "DELPHI",
                             "SQLSERVER"
@@ -240,7 +240,7 @@
                 "city": "Pinhalzinho",
                 "projects": [
                     {
-                        "description": "Desenvolvimento de sistema de recursos humanos",
+                        "description": "Trabalhei no desenvolvimento de um sistema de recursos humanos.",
                         "stack": [
                             "DELPHI",
                             "FIREBIRD"
@@ -260,7 +260,7 @@
                 "city": "Chapecó",
                 "projects": [
                     {
-                        "description": "Desenvolvimento de ERP comercial",
+                        "description": "Participei no desenvolvimento de um ERP comercial.",
                         "stack": [
                             "DELPHI",
                             "FIREBIRD"
@@ -280,7 +280,7 @@
                 "city": "Chapecó",
                 "projects": [
                     {
-                        "description": "Desenvolvimento de sistema hospitalar",
+                        "description": "Contribuí na construção de uma solução hospitalar abrangente, melhorando a coordenação e a qualidade do atendimento ao paciente.",
                         "stack": [
                             "DELPHI",
                             "FIREBIRD",
@@ -302,7 +302,7 @@
                 "city": "Chapecó",
                 "projects": [
                     {
-                        "description": "Desenvolvimento de CRM para revendas de TELECOM",
+                        "description": "Desenvolvi um CRM para revendas de TELECOM.",
                         "stack": [
                             "JAVA",
                             "ACTION-SCRIPT",
