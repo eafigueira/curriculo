@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { JobCard, JobProject, JobProjects } from "../components/job-card/job-card";
 import styles from './index.module.css';
+import { Me } from "../components/me/me";
+import { Contacts } from "../components/contacts/contacts";
+import { HardSkills } from "../components/hard-skills/hard-skills";
 
 export default function Index() {
   const [current, setCurrent] = useState(undefined as any)
@@ -15,8 +18,9 @@ export default function Index() {
   return (
     <main className={styles.main}>
       <div className={styles.left}>
-        <div>{current?.name}</div>
-        <div>{current?.birthDate}</div>
+        <Me name={current?.name} birthDate={current?.birthDate} />
+        <Contacts contacts={current.contacts} />
+        <HardSkills hardSkills={current?.hardSkills}/>
       </div>
       <div className={styles.right}>
         {current?.jobs.map((job: any) => <JobCard
