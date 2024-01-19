@@ -2,17 +2,17 @@ import { HardSkillProperties, HardSkillsProperties } from "./hard-skills.interfa
 
 export function HardSkills({ hardSkills }: HardSkillsProperties) {
     return <div>
-        {hardSkills.map(hardSkill =>
+        {hardSkills?.map(hardSkill =>
             <HardSkill
-                name={hardSkill.name}
-                skillTimeMonths={hardSkill.skillTimeMonths}
-                totalTimeMonths={hardSkill.totalTimeMonths} />)}
+                stack={hardSkill.stack}
+                timeStackWorking={hardSkill.timeStackWorking}
+                timeTotalWorking={hardSkill.timeTotalWorking} />)}
     </div>
 }
 
-export function HardSkill({ name, skillTimeMonths }: HardSkillProperties) {
+export function HardSkill({ stack, timeStackWorking, timeTotalWorking }: HardSkillProperties) {
     return <div>
-        <div>{name}</div>
-        <div>{skillTimeMonths}</div>
+        <div>{stack}</div>
+        <progress value={timeStackWorking} max={timeTotalWorking} />
     </div>
 }

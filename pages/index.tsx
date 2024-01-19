@@ -19,8 +19,8 @@ export default function Index() {
     <main className={styles.main}>
       <div className={styles.left}>
         <Me name={current?.name} birthDate={current?.birthDate} />
-        <Contacts contacts={current.contacts} />
-        <HardSkills hardSkills={current?.hardSkills}/>
+        <Contacts contacts={current?.contacts} />
+        <HardSkills hardSkills={current?.hardSkills} />
       </div>
       <div className={styles.right}>
         {current?.jobs.map((job: any) => <JobCard

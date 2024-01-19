@@ -20,8 +20,13 @@ function diferencaEmMeses(dataInicial: string, dataFinal: string) {
 
   return diferencaAnos * 12 + diferencaMeses;
 }
-function sumaryTimeByStack(jobs: any[]) {
+function sumaryHardSkills(jobs: any[]) {
   const stackTempo = {} as any;
+
+  const firstJobDate = jobs[0].period[0].startDate
+  const lastJobDate = jobs[jobs.length - 1].period[jobs[jobs.length - 1].period.length - 1].endDate
+
+  const timeTotalWorking = diferencaEmMeses(firstJobDate, lastJobDate)
 
   jobs.forEach(job => {
     job.period.forEach((periodo: any) => {
@@ -37,7 +42,7 @@ function sumaryTimeByStack(jobs: any[]) {
       });
     });
   });
-  return Object.entries(stackTempo).map(([stack, tempoTotal]) => ({ stack, tempoTotal }));
+  return Object.entries(stackTempo).map(([stack, tempoTotal]) => ({ stack, timeTotalWorking, timeStackWorking: tempoTotal }));
 }
 
 function parseDate(dateString: string): Date {
@@ -47,10 +52,10 @@ function parseDate(dateString: string): Date {
 
 export default function handler(req: Request, res: any) {
   if (req.method === 'GET') {
-    const users = data.map(user => ({ ...user, sumary: sumaryTimeByStack(user.jobs) }))
     data.forEach(user => {
-      user.jobs.sort((a, b) => parseDate(a.period[0].startDate).getMilliseconds() - parseDate(b.period[0].startDate).getMilliseconds());
+      user.jobs.sort((a, b) => parseDate(a.period[0].startDate).getTime() - parseDate(b.period[0].startDate).getTime());
     });
+    const users = data.map(user => ({ ...user, hardSkills: sumaryHardSkills(user.jobs) }))
     res.status(200).json(users);
   } else {
     res.setHeader('Allow', ['GET']);

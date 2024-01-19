@@ -3,7 +3,7 @@ export interface HardSkillsProperties {
 }
 
 export interface HardSkillProperties {
-    name: string,
-    totalTimeMonths: number,
-    skillTimeMonths: number
+    stack: string,
+    timeTotalWorking: number,
+    timeStackWorking: number
 }

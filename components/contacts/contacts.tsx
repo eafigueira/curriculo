@@ -2,7 +2,7 @@ import { ContactProperties, ContactsProperties } from "./contacts.interface";
 
 export function Contacts({ contacts }: ContactsProperties) {
     return <div>
-        {contacts.map(({ contact, type }) => <Contact type={type} contact={contact} />)}
+        {contacts?.map(({ contact, type }) => <Contact type={type} contact={contact} />)}
     </div>
 }
 
