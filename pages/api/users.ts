@@ -1,4 +1,5 @@
 import data from '../../data/database.json'
+import assets from '../../data/assets.json'
 
 function diferencaEmMeses(dataInicial: string, dataFinal: string) {
   const [mesInicial, anoInicial] = dataInicial.split('/').map(Number);
@@ -42,7 +43,28 @@ function sumaryHardSkills(jobs: any[]) {
       });
     });
   });
-  return Object.entries(stackTempo).map(([stack, tempoTotal]) => ({ stack, timeTotalWorking, timeStackWorking: tempoTotal }));
+
+  const stacks = assets.filter(a => a.type === "stacks")
+
+
+  let results = Object.entries(stackTempo)
+    .map(([stack, tempoTotal]) => {
+      let stackResult = {
+        name: stack,
+        type: "NOTYPE"
+      }
+      const stackType = stacks[0].data.filter(s => s.name === stack)
+      if (stackType.length > 0) {
+        stackResult = {
+          name: stack,
+          type: stackType[0].type
+        }
+      }
+      return { stack: stackResult, timeTotalWorking, timeStackWorking: tempoTotal }
+    });
+
+  results.sort((a, b) => a.stack.name.localeCompare(b.stack.name));
+  return results
 }
 
 function parseDate(dateString: string): Date {

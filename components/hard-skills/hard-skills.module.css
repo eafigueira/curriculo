@@ -1,0 +1,18 @@
+.hardSkillBox {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.boxTypeStack {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex: auto;
+}
+
+.progressBar {
+    width: 70px;
+}
+.nameStack {
+    white-space: nowrap;
+}

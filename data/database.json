@@ -51,7 +51,8 @@
                             "KUBERNETES",
                             "REDIS",
                             "RABBITMQ",
-                            "POSTGRES"
+                            "POSTGRES",
+                            "SQL"                            
                         ]
                     },
                     {
@@ -63,7 +64,8 @@
                             "KUBERNETES",
                             "AWS",
                             "AWS-SQS",
-                            "DYNAMODB"
+                            "DYNAMODB",
+                            "SQL"
                         ]
                     },
                     {
@@ -75,7 +77,8 @@
                             "KUBERNETES",
                             "AWS",
                             "AWS-SQS",
-                            "DYNAMODB"
+                            "DYNAMODB",
+                            "SQL"   
                         ]
                     },
                     {
@@ -84,7 +87,8 @@
                             "JAVA",
                             "SPRING-BOOT",
                             "SQLSERVER",
-                            "JENKINS"
+                            "JENKINS",
+                            "SQL"   
                         ]
                     },
                     {
@@ -93,7 +97,8 @@
                             "NODEJS",
                             "NESTJS",
                             "ORACLE",
-                            "JENKINS"
+                            "JENKINS",
+                            "SQL"   
                         ]
                     }
                 ]
@@ -115,7 +120,8 @@
                             "KOTLIN",
                             "SPRING-BOOT",
                             "POSTGRES",
-                            "GCP"
+                            "GCP",
+                            "SQL"   
                         ]
                     },
                     {
@@ -126,7 +132,7 @@
                             "POSTGRES",
                             "AWS",
                             "AWS-SQS",
-                            "APACHE-KAFKA"
+                            "KAFKA"
                         ]
                     }
                 ]
@@ -147,7 +153,8 @@
                         "stack": [
                             "ORACLE",
                             "JAVA",
-                            "NODEJS"
+                            "NODEJS",
+                            "SQL"
                         ]
                     }
                 ]
@@ -170,7 +177,9 @@
                     {
                         "description": "Participei no desenvolvimento de software para o segmento varejista, focando na melhoria das operações de negócios e na experiência do cliente.",
                         "stack": [
-                            "DATAFLEX"
+                            "DATAFLEX",
+                            "POSTGRES",
+                            "SQL"   
                         ]
                     }
                 ]
@@ -193,7 +202,8 @@
                             "NODEJS",
                             "REACT",
                             "GCP",
-                            "MYSQL"
+                            "MYSQL",
+                            "SQL"   
                         ]
                     },
                     {
@@ -203,7 +213,8 @@
                             "NODEJS",
                             "REACT",
                             "GCP",
-                            "MYSQL"
+                            "MYSQL",
+                            "SQL"   
                         ]
                     }
                 ]
@@ -223,7 +234,8 @@
                         "description": "Desenvolvi um sistema para bares e restaurantes, visando melhorar a gestão e o processamento de operações.",
                         "stack": [
                             "DELPHI",
-                            "SQLSERVER"
+                            "SQLSERVER",
+                            "SQL"   
                         ]
                     }
                 ]
@@ -243,7 +255,8 @@
                         "description": "Trabalhei no desenvolvimento de um sistema de recursos humanos.",
                         "stack": [
                             "DELPHI",
-                            "FIREBIRD"
+                            "FIREBIRD",
+                            "SQL"   
                         ]
                     }
                 ]
@@ -263,7 +276,8 @@
                         "description": "Participei no desenvolvimento de um ERP comercial.",
                         "stack": [
                             "DELPHI",
-                            "FIREBIRD"
+                            "FIREBIRD",
+                            "SQL"   
                         ]
                     }
                 ]
@@ -285,7 +299,8 @@
                             "DELPHI",
                             "FIREBIRD",
                             "MYSQL",
-                            "JAVA"
+                            "JAVA",
+                            "SQL"   
                         ]
                     }
                 ]
@@ -305,8 +320,9 @@
                         "description": "Desenvolvi um CRM para revendas de TELECOM.",
                         "stack": [
                             "JAVA",
-                            "ACTION-SCRIPT",
-                            "MYSQL"
+                            "AS3",
+                            "MYSQL",
+                            "SQL"   
                         ]
                     }
                 ]

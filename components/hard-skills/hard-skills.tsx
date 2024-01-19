@@ -1,4 +1,5 @@
 import { HardSkillProperties, HardSkillsProperties } from "./hard-skills.interface";
+import styles from './hard-skills.module.css'
 
 export function HardSkills({ hardSkills }: HardSkillsProperties) {
     return <div>
@@ -11,8 +12,11 @@ export function HardSkills({ hardSkills }: HardSkillsProperties) {
 }
 
 export function HardSkill({ stack, timeStackWorking, timeTotalWorking }: HardSkillProperties) {
-    return <div>
-        <div>{stack}</div>
-        <progress value={timeStackWorking} max={timeTotalWorking} />
+    return <div className={styles.hardSkillBox}>
+        <div className={styles.boxTypeStack}>
+            <img src={`/api/images?type=${stack.type}`} width={16} height={16} />
+            <div className={styles.nameStack}>{stack.name}</div>
+        </div>
+        <progress className={styles.progressBar} value={timeStackWorking} max={timeTotalWorking} />
     </div>
 }

@@ -79,7 +79,7 @@
                 "type": "CLOUD"
             },
             {
-                "name": "APACHE-KAFKA",
+                "name": "KAFKA",
                 "type": "TOOL"
             },
             {
@@ -99,8 +99,12 @@
                 "type": "DATABASE"
             },
             {
-                "name": "ACTION-SCRIPT",
+                "name": "AS3",
                 "type": "LANGUAGE"
+            },
+            {
+                "name": "SQL",
+                "type" : "LANGUAGE"
             }
         ]
     }
