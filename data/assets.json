@@ -107,5 +107,9 @@
                 "type" : "LANGUAGE"
             }
         ]
+    },
+    {
+        "type": "photo",
+        "data": "./images/photo.jpg"
     }
 ]

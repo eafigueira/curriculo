@@ -11,7 +11,7 @@ export default function handler(req: any, res: any) {
         }
 
         try {
-            const imagePath = path.join(process.cwd(), 'data/images', `24x24_${type.toLowerCase()}.png`);
+            const imagePath = path.join(process.cwd(), 'data/images', `${type.toLowerCase()}.png`);
             readFile(imagePath, (err, data) => {
                 if (err) {
                     if (err.code === 'ENOENT') {

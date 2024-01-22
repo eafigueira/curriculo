@@ -10,6 +10,14 @@
             {
                 "type": "X",
                 "contact": "@eafigueira"
+            },
+            {
+                "type": "LINKEDIN",
+                "contact": "emerson-figueira-33b5a620"
+            },
+            {
+                "type": "GITHUB",
+                "contact": "https://github.com/eafigueira"
             }
         ],
         "jobs": [
@@ -253,27 +261,6 @@
                 "projects": [
                     {
                         "description": "Trabalhei no desenvolvimento de um sistema de recursos humanos.",
-                        "stack": [
-                            "DELPHI",
-                            "FIREBIRD",
-                            "SQL"   
-                        ]
-                    }
-                ]
-            },
-            {
-                "company": "UNINFO SISTEMAS LTDA",
-                "position": "Developer",
-                "period": [
-                    {
-                        "startDate": "04/2002",
-                        "endDate": "08/2002"
-                    }
-                ],
-                "city": "Chapecó",
-                "projects": [
-                    {
-                        "description": "Participei no desenvolvimento de um ERP comercial.",
                         "stack": [
                             "DELPHI",
                             "FIREBIRD",

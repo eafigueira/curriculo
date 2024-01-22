@@ -1,0 +1,10 @@
+.contactBox {
+    display: flex;
+}
+.concact {
+    margin-left: 4px;
+}
+
+.box {
+    margin-bottom: 10px;
+}

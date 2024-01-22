@@ -1,6 +1,7 @@
 .hardSkillBox {
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 4px;
 }
 
 .boxTypeStack {
@@ -15,4 +16,5 @@
 }
 .nameStack {
     white-space: nowrap;
+    margin-left: 2px;
 }
