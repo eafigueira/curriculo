@@ -60,7 +60,7 @@
                             "REDIS",
                             "RABBITMQ",
                             "POSTGRES",
-                            "SQL"                            
+                            "SQL"
                         ]
                     },
                     {
@@ -86,7 +86,7 @@
                             "AWS",
                             "AWS-SQS",
                             "DYNAMODB",
-                            "SQL"   
+                            "SQL"
                         ]
                     },
                     {
@@ -96,7 +96,7 @@
                             "SPRING-BOOT",
                             "SQLSERVER",
                             "JENKINS",
-                            "SQL"   
+                            "SQL"
                         ]
                     },
                     {
@@ -106,7 +106,7 @@
                             "NESTJS",
                             "ORACLE",
                             "JENKINS",
-                            "SQL"   
+                            "SQL"
                         ]
                     }
                 ]
@@ -129,7 +129,7 @@
                             "SPRING-BOOT",
                             "POSTGRES",
                             "GCP",
-                            "SQL"   
+                            "SQL"
                         ]
                     },
                     {
@@ -187,7 +187,7 @@
                         "stack": [
                             "DATAFLEX",
                             "POSTGRES",
-                            "SQL"   
+                            "SQL"
                         ]
                     }
                 ]
@@ -211,7 +211,7 @@
                             "REACT",
                             "GCP",
                             "MYSQL",
-                            "SQL"   
+                            "SQL"
                         ]
                     },
                     {
@@ -222,7 +222,7 @@
                             "REACT",
                             "GCP",
                             "MYSQL",
-                            "SQL"   
+                            "SQL"
                         ]
                     }
                 ]
@@ -243,7 +243,7 @@
                         "stack": [
                             "DELPHI",
                             "SQLSERVER",
-                            "SQL"   
+                            "SQL"
                         ]
                     }
                 ]
@@ -264,7 +264,7 @@
                         "stack": [
                             "DELPHI",
                             "FIREBIRD",
-                            "SQL"   
+                            "SQL"
                         ]
                     }
                 ]
@@ -287,7 +287,7 @@
                             "FIREBIRD",
                             "MYSQL",
                             "JAVA",
-                            "SQL"   
+                            "SQL"
                         ]
                     }
                 ]
@@ -309,7 +309,29 @@
                             "JAVA",
                             "AS3",
                             "MYSQL",
-                            "SQL"   
+                            "SQL"
+                        ]
+                    }
+                ]
+            },
+            {
+                "company": "TEXOIT",
+                "position": "Developer",
+                "period": [
+                    {
+                        "startDate": "02/2021",
+                        "endDate": "03/2021"
+                    }
+                ],
+                "city": "Joinville",
+                "projects": [
+                    {
+                        "description": "Parcipei da construção de modulo para suportar pagamentos e recebimentos via PIX",
+                        "stack": [
+                            "JAVA",
+                            "QUARKUS",
+                            "MYSQL",
+                            "SQL"
                         ]
                     }
                 ]
