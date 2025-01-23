@@ -39,7 +39,14 @@
     .description {
       font-size: smaller;
       font-weight: 400;
-      padding-left: 30px
+      padding-left: 30px;
+    }
+    .breakPage {
+      font-size: smaller;
+      font-weight: 400;
+      padding-left: 30px;
+      page-break-before: always;
+      break-before: page;
     }
   }
 }

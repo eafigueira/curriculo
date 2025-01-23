@@ -1,5 +1,5 @@
-import data from '../../data/database.json'
-import assets from '../../data/assets.json'
+import assets from '../../data/assets.json';
+import data from '../../data/database.json';
 
 function diferencaEmMeses(dataInicial: string, dataFinal: string) {
   const [mesInicial, anoInicial] = dataInicial.split('/').map(Number);
@@ -75,7 +75,7 @@ function parseDate(dateString: string): Date {
 export default function handler(req: Request, res: any) {
   if (req.method === 'GET') {
     data.forEach(user => {
-      user.jobs.sort((a, b) => parseDate(a.period[0].startDate).getTime() - parseDate(b.period[0].startDate).getTime());
+      user.jobs.sort((a, b) => parseDate(b.period[0].startDate).getTime() - parseDate(a.period[0].startDate).getTime());
     });
     const users = data.map(user => ({ ...user, hardSkills: sumaryHardSkills(user.jobs) }))
     res.status(200).json(users);

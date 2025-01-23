@@ -10,6 +10,8 @@ export interface JobCardProperties {
     position: string
     period: JobPeriod[]
     children?: ReactNode
+    breakPage: boolean
+
 }
 
 export interface JobProjectsProperties {

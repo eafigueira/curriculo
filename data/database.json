@@ -228,6 +228,7 @@
                 ]
             },
             {
+                "breakPage": true,
                 "company": "HEXTOR SISTEMAS LTDA",
                 "position": "Developer",
                 "period": [
