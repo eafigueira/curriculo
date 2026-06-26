@@ -523,13 +523,6 @@ function buildHtml(user) {
       border-radius: 8px;
     }
 
-    .footer {
-      margin-top: 3rem;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
     @media (max-width: 800px) {
       .hero-grid,
       .job-header {
@@ -597,10 +590,6 @@ function buildHtml(user) {
       </div>
       <div class="education-grid">${educationHtml}</div>
     </section>
-
-    <footer class="footer">
-      <p>Gerado a partir de <code>data/database.json</code> · Atualizado em ${new Date().toLocaleDateString("pt-BR")}</p>
-    </footer>
   </main>
 </body>
 </html>`;
