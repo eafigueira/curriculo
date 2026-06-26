@@ -1,0 +1,17 @@
+{
+  "title": "Java Senior | Especialista Backend",
+  "summary": "Especialista em Desenvolvimento de Software com mais de 24 anos de experiência, focado na última década em arquitetura de microsserviços, alta volumetria e sistemas de pagamentos críticos. Sólida vivência técnica na orquestração de soluções híbridas (Java/Node.js) e liderança de modernização de legados.",
+  "location": "Chapecó, SC — Brasil",
+  "education": [
+    {
+      "school": "UNOCHAPECO",
+      "course": "Pós-graduação em Desenvolvimento Web",
+      "year": "2010 - 2011"
+    },
+    {
+      "school": "UNOESC",
+      "course": "Análise e Desenvolvimento de Sistemas",
+      "year": "2001 - 2004"
+    }
+  ]
+}

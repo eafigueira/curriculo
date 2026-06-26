@@ -12,47 +12,35 @@
                 "contact": "@eafigueira"
             },
             {
-                "type": "LINKEDIN",
-                "contact": "emerson-figueira-33b5a620"
-            },
-            {
                 "type": "GITHUB",
                 "contact": "https://github.com/eafigueira"
             }
         ],
         "jobs": [
             {
-                "company": "FRIGORIFICO CHAPECÓ",
-                "position": "Estagiário",
+                "company": "Maitha TEC",
+                "position": "Java Senior",
                 "period": [
                     {
-                        "startDate": "01/1999",
-                        "endDate": "03/2002"
-                    }
-                ],
-                "city": "Chapecó",
-                "projects": [
-                    {
-                        "description": "Atuei na correção de bugs e na criação de relatórios.",
-                        "stack": [
-                            "PICK-BASIC",
-                            "UNIDATA"
-                        ]
-                    }
-                ]
-            },
-            {
-                "company": "SENSEDIA S.A.",
-                "position": "Backend developer",
-                "period": [
-                    {
-                        "startDate": "03/2022"
+                        "startDate": "03/2026"
                     }
                 ],
                 "city": "Campinas",
                 "projects": [
                     {
-                        "description": "Participei no desenvolvimento de um sistema integrado para emissão de boletos e compensação de pagamentos via PIX, visando a automação do processo de faturamento e melhoria da eficiência operacional.",
+                        "description": "Desenvolvimento e manutenção de sistema de CRM/ERP em spring-boot e GCP",
+                        "stack": [
+                            "JAVA",
+                            "MICROSERVICES",
+                            "RABBITMQ",
+                            "POSTGRES",
+                            "GCP",
+                            "SQL",
+                            "KUBERNETES"
+                        ]
+                    },
+                    {
+                        "description": "Engenherou sistema crítico de pagamentos instantâneos (PIX) e boletos, implementando arquitetura de microsserviços escalável com NestJS e Kubernetes para suportar alto volume transacional.",
                         "stack": [
                             "NODEJS",
                             "NESTJS",
@@ -64,7 +52,7 @@
                         ]
                     },
                     {
-                        "description": "Colaborei na implementação de um middleware de pagamento, focando na orquestração dos processos internos de pagamento e na integração de sistemas. Participei na otimização do fluxo de pagamento e na implementação de protocolos de segurança.",
+                        "description": "Orquestrou middleware de pagamentos complexo utilizando Spring Boot e AWS SQS, otimizando o throughput de transações e garantindo a resiliência via arquitetura orientada a eventos.",
                         "stack": [
                             "JAVA",
                             "SPRING-BOOT",
@@ -77,7 +65,7 @@
                         ]
                     },
                     {
-                        "description": "Trabalhei no desenvolvimento de um checkout transparente para cartões, contribuindo para a conversão de transações em e-wallets e reforçando a segurança dos dados.",
+                        "description": "Implementou checkout transparente seguro para e-wallets, integrando DynamoDB para persistência de alta performance e elevando as taxas de conversão de pagamentos.",
                         "stack": [
                             "JAVA",
                             "SPRING-BOOT",
@@ -90,7 +78,7 @@
                         ]
                     },
                     {
-                        "description": "Desenvolvi APIs para a fase I do open insurance, focando na criação de interfaces seguras para compartilhamento de dados de seguros e colaborando com equipes de conformidade.",
+                        "description": "Desenvolveu APIs de Open Insurance em conformidade com regulações, criando interfaces seguras e monitoráveis via Jenkins para compartilhamento de dados sensíveis.",
                         "stack": [
                             "JAVA",
                             "SPRING-BOOT",
@@ -100,7 +88,91 @@
                         ]
                     },
                     {
-                        "description": "Participei no desenvolvimento de APIs para automatizar o processo de solicitação de equipamentos POS, melhorando a eficiência operacional e a experiência do usuário.",
+                        "description": "Automatizou o fluxo de solicitação de equipamentos POS integrando sistemas legados Oracle com microsserviços Node.js, reduzindo o tempo operacional de provisionamento.",
+                        "stack": [
+                            "NODEJS",
+                            "NESTJS",
+                            "ORACLE",
+                            "JENKINS",
+                            "SQL"
+                        ]
+                    }
+                ]
+            },
+            {
+                "company": "SENSEDIA S.A.",
+                "position": "Java/Node Specialist",
+                "period": [
+                    {
+                        "startDate": "03/2022",
+                        "endDate": "03/2026"
+                    }
+                ],
+                "city": "Campinas",
+                "projects": [
+                    {
+                        "description": "Atua como Especialista Técnico em squad de alta performance, arquitetando um motor de decisão de crédito e processamento de pagamentos que suporta milhares de requisições simultâneas. Projetou a solução utilizando microsserviços híbridos (Java/Node.js) com RabbitMQ para orquestração assíncrona e Oracle para consistência transacional, garantindo baixa latência e integração resiliente com múltiplos ecossistemas bancários.",
+                        "stack": [
+                            "JAVA",
+                            "NODEJS",
+                            "MICROSERVICES",
+                            "RABBITMQ",
+                            "ORACLE",
+                            "REDIS",
+                            "KUBERNETES",
+                            "SQL"
+                        ]
+                    },
+                    {
+                        "description": "Engenherou sistema crítico de pagamentos instantâneos (PIX) e boletos, implementando arquitetura de microsserviços escalável com NestJS e Kubernetes para suportar alto volume transacional.",
+                        "stack": [
+                            "NODEJS",
+                            "NESTJS",
+                            "KUBERNETES",
+                            "REDIS",
+                            "RABBITMQ",
+                            "POSTGRES",
+                            "SQL"
+                        ]
+                    },
+                    {
+                        "description": "Orquestrou middleware de pagamentos complexo utilizando Spring Boot e AWS SQS, otimizando o throughput de transações e garantindo a resiliência via arquitetura orientada a eventos.",
+                        "stack": [
+                            "JAVA",
+                            "SPRING-BOOT",
+                            "MYSQL",
+                            "KUBERNETES",
+                            "AWS",
+                            "AWS-SQS",
+                            "DYNAMODB",
+                            "SQL"
+                        ]
+                    },
+                    {
+                        "description": "Implementou checkout transparente seguro para e-wallets, integrando DynamoDB para persistência de alta performance e elevando as taxas de conversão de pagamentos.",
+                        "stack": [
+                            "JAVA",
+                            "SPRING-BOOT",
+                            "MYSQL",
+                            "KUBERNETES",
+                            "AWS",
+                            "AWS-SQS",
+                            "DYNAMODB",
+                            "SQL"
+                        ]
+                    },
+                    {
+                        "description": "Desenvolveu APIs de Open Insurance em conformidade com regulações, criando interfaces seguras e monitoráveis via Jenkins para compartilhamento de dados sensíveis.",
+                        "stack": [
+                            "JAVA",
+                            "SPRING-BOOT",
+                            "SQLSERVER",
+                            "JENKINS",
+                            "SQL"
+                        ]
+                    },
+                    {
+                        "description": "Automatizou o fluxo de solicitação de equipamentos POS integrando sistemas legados Oracle com microsserviços Node.js, reduzindo o tempo operacional de provisionamento.",
                         "stack": [
                             "NODEJS",
                             "NESTJS",
@@ -113,7 +185,7 @@
             },
             {
                 "company": "ZUP I.T.",
-                "position": "Backend developer",
+                "position": "Backend Developer",
                 "period": [
                     {
                         "startDate": "06/2021",
@@ -123,17 +195,7 @@
                 "city": "Uberlandia",
                 "projects": [
                     {
-                        "description": "Contribuí no desenvolvimento de uma plataforma de integração entre transportadores rodoviários e empresas ferroviárias, focando na sincronização e otimização de operações logísticas.",
-                        "stack": [
-                            "KOTLIN",
-                            "SPRING-BOOT",
-                            "POSTGRES",
-                            "GCP",
-                            "SQL"
-                        ]
-                    },
-                    {
-                        "description": "Auxiliei na migração de uma base de dados de clientes, transferindo cerca de 60 milhões de registros para uma arquitetura mais moderna e eficiente.",
+                        "description": "Executou a migração estratégica de 60 milhões de registros de clientes, desenhando pipelines de dados resilientes com Kafka e Spring Boot para garantir integridade e zero downtime.",
                         "stack": [
                             "JAVA",
                             "SPRING-BOOT",
@@ -142,12 +204,79 @@
                             "AWS-SQS",
                             "KAFKA"
                         ]
+                    },
+                    {
+                        "description": "Desenvolveu plataforma de integração logística rodoviária/ferroviária usando Kotlin e GCP, otimizando a sincronização de dados em tempo real entre operadores.",
+                        "stack": [
+                            "KOTLIN",
+                            "SPRING-BOOT",
+                            "POSTGRES",
+                            "GCP",
+                            "SQL"
+                        ]
                     }
                 ]
             },
             {
-                "company": "UNIMED CHAPECO",
-                "position": "Analista de sistemas",
+                "company": "TEXOIT",
+                "position": "Developer",
+                "period": [
+                    {
+                        "startDate": "02/2021",
+                        "endDate": "03/2021"
+                    }
+                ],
+                "city": "Joinville",
+                "projects": [
+                    {
+                        "description": "Implementou módulo de pagamentos PIX utilizando Quarkus (Native), focando em baixo footprint de memória e alta velocidade de inicialização.",
+                        "stack": [
+                            "JAVA",
+                            "QUARKUS",
+                            "MYSQL",
+                            "SQL"
+                        ]
+                    }
+                ]
+            },
+            {
+                "company": "Z2R SISTEMAS",
+                "position": "CTO",
+                "period": [
+                    {
+                        "startDate": "03/2017",
+                        "endDate": "02/2021"
+                    }
+                ],
+                "city": "Balneário Camboriú",
+                "projects": [
+                    {
+                        "description": "Liderou a arquitetura e desenvolvimento de plataforma SaaS para gestão de prontuários médicos, utilizando React e GCP para entregar uma solução escalável e segura.",
+                        "stack": [
+                            "JAVA",
+                            "NODEJS",
+                            "REACT",
+                            "GCP",
+                            "MYSQL",
+                            "SQL"
+                        ]
+                    },
+                    {
+                        "description": "Dirigiu o desenvolvimento full-stack de CRM especializado para Telecom, definindo stack tecnológica e processos de deploy na nuvem.",
+                        "stack": [
+                            "JAVA",
+                            "NODEJS",
+                            "REACT",
+                            "GCP",
+                            "MYSQL",
+                            "SQL"
+                        ]
+                    }
+                ]
+            },
+            {
+                "company": "UNIMED CHAPECÓ",
+                "position": "Analista de Sistemas",
                 "period": [
                     {
                         "startDate": "03/2012",
@@ -157,11 +286,33 @@
                 "city": "Chapecó",
                 "projects": [
                     {
-                        "description": "Trabalhei no desenvolvimento e implementação de soluções de software para otimizar processos internos, contribuindo para a eficiência operacional e fornecendo suporte técnico aos usuários.",
+                        "description": "Modernizou ecossistema hospitalar integrando bases Oracle legadas com novas interfaces Java/Node.js, aumentando a eficiência operacional das equipes médicas.",
                         "stack": [
                             "ORACLE",
                             "JAVA",
                             "NODEJS",
+                            "SQL"
+                        ]
+                    }
+                ]
+            },
+            {
+                "company": "FREELANCER",
+                "position": "Developer",
+                "period": [
+                    {
+                        "startDate": "12/2010",
+                        "endDate": "02/2012"
+                    }
+                ],
+                "city": "Chapecó",
+                "projects": [
+                    {
+                        "description": "Desenvolveu e implantou CRM customizado para Telecom, utilizando ActionScript 3 para interfaces ricas e Java para backend robusto.",
+                        "stack": [
+                            "JAVA",
+                            "AS3",
+                            "MYSQL",
                             "SQL"
                         ]
                     }
@@ -183,7 +334,7 @@
                 "city": "Chapecó",
                 "projects": [
                     {
-                        "description": "Participei no desenvolvimento de software para o segmento varejista, focando na melhoria das operações de negócios e na experiência do cliente.",
+                        "description": "Otimizou ERP varejista utilizando DataFlex e Postgres, melhorando a performance de queries críticas para operações de vendas.",
                         "stack": [
                             "DATAFLEX",
                             "POSTGRES",
@@ -193,42 +344,6 @@
                 ]
             },
             {
-                "company": "Z2R SISTEMAS",
-                "position": "CTO",
-                "period": [
-                    {
-                        "startDate": "03/2017",
-                        "endDate": "02/2021"
-                    }
-                ],
-                "city": "Balneário camboriu",
-                "projects": [
-                    {
-                        "description": "Participei na criação de uma solução para arquivamento de prontuários médicos, melhorando a gestão de informações de saúde e a eficiência operacional em ambientes clínicos.",
-                        "stack": [
-                            "JAVA",
-                            "NODEJS",
-                            "REACT",
-                            "GCP",
-                            "MYSQL",
-                            "SQL"
-                        ]
-                    },
-                    {
-                        "description": "Contribuí no desenvolvimento de um CRM para revendas de TELECOM.",
-                        "stack": [
-                            "JAVA",
-                            "NODEJS",
-                            "REACT",
-                            "GCP",
-                            "MYSQL",
-                            "SQL"
-                        ]
-                    }
-                ]
-            },
-            {
-                "breakPage": true,
                 "company": "HEXTOR SISTEMAS LTDA",
                 "position": "Developer",
                 "period": [
@@ -240,31 +355,10 @@
                 "city": "Chapecó",
                 "projects": [
                     {
-                        "description": "Desenvolvi um sistema para bares e restaurantes, visando melhorar a gestão e o processamento de operações.",
+                        "description": "Desenvolveu sistema de gestão para food-service com Delphi, focando em estabilidade e resposta rápida para frentes de caixa.",
                         "stack": [
                             "DELPHI",
                             "SQLSERVER",
-                            "SQL"
-                        ]
-                    }
-                ]
-            },
-            {
-                "company": "JB SOFTWARE LTDA",
-                "position": "Developer",
-                "period": [
-                    {
-                        "startDate": "11/2004",
-                        "endDate": "04/2005"
-                    }
-                ],
-                "city": "Pinhalzinho",
-                "projects": [
-                    {
-                        "description": "Trabalhei no desenvolvimento de um sistema de recursos humanos.",
-                        "stack": [
-                            "DELPHI",
-                            "FIREBIRD",
                             "SQL"
                         ]
                     }
@@ -282,7 +376,7 @@
                 "city": "Chapecó",
                 "projects": [
                     {
-                        "description": "Contribuí na construção de uma solução hospitalar abrangente, melhorando a coordenação e a qualidade do atendimento ao paciente.",
+                        "description": "Coordenou o ciclo de vida completo de desenvolvimento de software hospitalar, migrando processos manuais para sistema integrado Delphi/Firebird.",
                         "stack": [
                             "DELPHI",
                             "FIREBIRD",
@@ -294,45 +388,42 @@
                 ]
             },
             {
-                "company": "FREELANCER",
+                "company": "JB SOFTWARE LTDA",
                 "position": "Developer",
                 "period": [
                     {
-                        "startDate": "12/2010",
-                        "endDate": "02/2012"
+                        "startDate": "11/2004",
+                        "endDate": "04/2005"
                     }
                 ],
-                "city": "Chapecó",
+                "city": "Pinhalzinho",
                 "projects": [
                     {
-                        "description": "Desenvolvi um CRM para revendas de TELECOM.",
+                        "description": "Codificou módulos essenciais para sistema de RH em Delphi, garantindo cálculo preciso de folhas de pagamento.",
                         "stack": [
-                            "JAVA",
-                            "AS3",
-                            "MYSQL",
+                            "DELPHI",
+                            "FIREBIRD",
                             "SQL"
                         ]
                     }
                 ]
             },
             {
-                "company": "TEXOIT",
-                "position": "Developer",
+                "company": "FRIGORIFICO CHAPECÓ",
+                "position": "Estagiário",
                 "period": [
                     {
-                        "startDate": "02/2021",
-                        "endDate": "03/2021"
+                        "startDate": "01/1999",
+                        "endDate": "03/2002"
                     }
                 ],
-                "city": "Joinville",
+                "city": "Chapecó",
                 "projects": [
                     {
-                        "description": "Parcipei da construção de modulo para suportar pagamentos e recebimentos via PIX",
+                        "description": "Manutenção e correção de sistemas legados em ambiente industrial, garantindo a continuidade das operações de fábrica.",
                         "stack": [
-                            "JAVA",
-                            "QUARKUS",
-                            "MYSQL",
-                            "SQL"
+                            "PICK-BASIC",
+                            "UNIDATA"
                         ]
                     }
                 ]

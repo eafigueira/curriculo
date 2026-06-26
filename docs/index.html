@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Currículo de Emerson Figueira — Java Senior | Especialista Backend">
+  <title>Emerson Figueira — Currículo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --surface: #121820;
+      --surface-2: #1a2230;
+      --text: #e8edf4;
+      --muted: #9aa7b8;
+      --accent: #3dd6c6;
+      --accent-2: #5b8def;
+      --border: rgba(255, 255, 255, 0.08);
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --radius: 18px;
+      --max: 1080px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "DM Sans", system-ui, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(61, 214, 198, 0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(91, 141, 239, 0.12), transparent 24%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--max));
+      margin: 0 auto;
+      padding: 2.5rem 0 4rem;
+    }
+
+    .hero {
+      display: grid;
+      gap: 1.5rem;
+      padding: 2rem;
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius) + 6px);
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .subtitle {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 52ch;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .summary {
+      color: #d4dde8;
+      font-size: 1.02rem;
+    }
+
+    .contacts {
+      list-style: none;
+      display: grid;
+      gap: 0.75rem;
+      padding: 1.25rem;
+      border-radius: var(--radius);
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+
+    .contacts li {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      color: var(--muted);
+      word-break: break-word;
+    }
+
+    .contact-icon {
+      width: 2rem;
+      height: 2rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: var(--surface-2);
+      color: var(--accent);
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .section {
+      margin-top: 2.5rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-note {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .top-skills,
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+
+    .tag {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.78rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+      color: #d7e0ea;
+    }
+
+    .tag-highlight {
+      border-color: rgba(61, 214, 198, 0.35);
+      background: rgba(61, 214, 198, 0.08);
+      color: #b7fff6;
+    }
+
+    .jobs {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .job-card,
+    .education-card,
+    .skill-group {
+      padding: 1.25rem 1.35rem;
+      border-radius: var(--radius);
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .company {
+      font-size: 1.1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .position {
+      color: var(--accent-2);
+      font-weight: 500;
+    }
+
+    .job-meta {
+      text-align: right;
+      color: var(--muted);
+      font-size: 0.92rem;
+      display: grid;
+      gap: 0.2rem;
+      min-width: 11rem;
+    }
+
+    .projects {
+      list-style: none;
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .project-desc {
+      margin-bottom: 0.55rem;
+      color: #d7dee8;
+    }
+
+    .skills-grid,
+    .education-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .skills-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .education-grid {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .skill-group h3,
+    .education-card h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 600;
+    }
+
+    .education-card p {
+      margin-bottom: 0.4rem;
+    }
+
+    .edu-year {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .footer {
+      margin-top: 3rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 800px) {
+      .hero-grid,
+      .job-header {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+
+      .job-meta {
+        text-align: left;
+      }
+    }
+
+    @media print {
+      body { background: white; color: #111; }
+      .hero, .job-card, .education-card, .skill-group, .contacts {
+        box-shadow: none;
+        background: white;
+        border-color: #ddd;
+      }
+      a { color: #111; text-decoration: none; }
+      .tag, .tag-highlight { border-color: #ccc; color: #333; background: #f7f7f7; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="hero">
+      <div class="eyebrow">Currículo online</div>
+      <h1>Emerson Figueira</h1>
+      <p class="subtitle">Java Senior | Especialista Backend · Chapecó, SC — Brasil</p>
+
+      <div class="hero-grid">
+        <p class="summary">Especialista em Desenvolvimento de Software com mais de 24 anos de experiência, focado na última década em arquitetura de microsserviços, alta volumetria e sistemas de pagamentos críticos. Sólida vivência técnica na orquestração de soluções híbridas (Java/Node.js) e liderança de modernização de legados.</p>
+        <ul class="contacts">
+          <li><span class="contact-icon" aria-hidden="true">✉</span><a href="mailto:eafigueira@gmail.com">eafigueira@gmail.com</a></li><li><span class="contact-icon" aria-hidden="true">𝕏</span><a href="https://x.com/eafigueira" target="_blank" rel="noopener noreferrer">@eafigueira</a></li><li><span class="contact-icon" aria-hidden="true">⌘</span><a href="https://github.com/eafigueira" target="_blank" rel="noopener noreferrer">https://github.com/eafigueira</a></li>
+        </ul>
+      </div>
+
+      <div class="top-skills" aria-label="Principais tecnologias">
+        <span class="tag tag-highlight">SQL</span><span class="tag tag-highlight">JAVA</span><span class="tag tag-highlight">NODEJS</span><span class="tag tag-highlight">MYSQL</span><span class="tag tag-highlight">KUBERNETES</span><span class="tag tag-highlight">SPRING-BOOT</span><span class="tag tag-highlight">ORACLE</span><span class="tag tag-highlight">AWS</span><span class="tag tag-highlight">AWS-SQS</span><span class="tag tag-highlight">GCP</span><span class="tag tag-highlight">RABBITMQ</span><span class="tag tag-highlight">POSTGRES</span>
+      </div>
+    </section>
+
+    <section class="section" id="experiencia">
+      <div class="section-header">
+        <h2>Experiência profissional</h2>
+        <span class="section-note">12 empresas</span>
+      </div>
+      <div class="jobs">
+      <article class="job-card">
+        <header class="job-header">
+          <div>
+            <h3 class="company">Maitha TEC</h3>
+            <p class="position">Java Senior</p>
+          </div>
+          <div class="job-meta">
+            <span class="period">03/2026 — Atualmente</span>
+            <span class="city">Campinas</span>
+          </div>
+        </header>
+        <ul class="projects">
+          <li class="project">
+            <p class="project-desc">Desenvolvimento e manutenção de sistema de CRM/ERP em spring-boot e GCP</p>
+            <div class="tags">
+              <span class="tag">JAVA</span><span class="tag">MICROSERVICES</span><span class="tag">RABBITMQ</span><span class="tag">POSTGRES</span><span class="tag">GCP</span><span class="tag">SQL</span><span class="tag">KUBERNETES</span>
+            </div>
+          </li>
+          <li class="project">
+            <p class="project-desc">Engenherou sistema crítico de pagamentos instantâneos (PIX) e boletos, implementando arquitetura de microsserviços escalável com NestJS e Kubernetes para suportar alto volume transacional.</p>
+            <div class="tags">
+              <span class="tag">NODEJS</span><span class="tag">NESTJS</span><span class="tag">KUBERNETES</span><span class="tag">REDIS</span><span class="tag">RABBITMQ</span><span class="tag">POSTGRES</span><span class="tag">SQL</span>
+            </div>
+          </li>
+          <li class="project">
+            <p class="project-desc">Orquestrou middleware de pagamentos complexo utilizando Spring Boot e AWS SQS, otimizando o throughput de transações e garantindo a resiliência via arquitetura orientada a eventos.</p>
+            <div class="tags">
+              <span class="tag">JAVA</span><span class="tag">SPRING-BOOT</span><span class="tag">MYSQL</span><span class="tag">KUBERNETES</span><span class="tag">AWS</span><span class="tag">AWS-SQS</span><span class="tag">DYNAMODB</span><span class="tag">SQL</span>
+            </div>
+          </li>
+          <li class="project">
+            <p class="project-desc">Implementou checkout transparente seguro para e-wallets, integrando DynamoDB para persistência de alta performance e elevando as taxas de conversão de pagamentos.</p>
+            <div class="tags">
+              <span class="tag">JAVA</span><span class="tag">SPRING-BOOT</span><span class="tag">MYSQL</span><span class="tag">KUBERNETES</span><span class="tag">AWS</span><span class="tag">AWS-SQS</span><span class="tag">DYNAMODB</span><span class="tag">SQL</span>
+            </div>
+          </li>
+          <li class="project">
+            <p class="project-desc">Desenvolveu APIs de Open Insurance em conformidade com regulações, criando interfaces seguras e monitoráveis via Jenkins para compartilhamento de dados sensíveis.</p>
+            <div class="tags">
+              <span class="tag">JAVA</span><span class="tag">SPRING-BOOT</span><span class="tag">SQLSERVER</span><span class="tag">JENKINS</span><span class="tag">SQL</span>
+            </div>
+          </li>
+          <li class="project">
+            <p class="project-desc">Automatizou o fluxo de solicitação de equipamentos POS integrando sistemas legados Oracle com microsserviços Node.js, reduzindo o tempo operacional de provisionamento.</p>
+            <div class="tags">
+              <span class="tag">NODEJS</span><span class="tag">NESTJS</span><span class="tag">ORACLE</span><span class="tag">JENKINS</span><span class="tag">SQL</span>
+            </div>
+          </li></ul>
+      </article>
+      <article class="job-card">
+        <header class="job-header">
+          <div>
+            <h3 class="company">SENSEDIA S.A.</h3>
+            <p class="position">Java/Node Specialist</p>
+          </div>
+          <div class="job-meta">
+            <span class="period">03/2022 — 03/2026</span>
+            <span class="city">Campinas</span>
+          </div>
+        </header>
+        <ul class="projects">
+          <li class="project">
+            <p class="project-desc">Atua como Especialista Técnico em squad de alta performance, arquitetando um motor de decisão de crédito e processamento de pagamentos que suporta milhares de requisições simultâneas. Projetou a solução utilizando microsserviços híbridos (Java/Node.js) com RabbitMQ para orquestração assíncrona e Oracle para consistência transacional, garantindo baixa latência e integração resiliente com múltiplos ecossistemas bancários.</p>
+            <div class="tags">
+              <span class="tag">JAVA</span><span class="tag">NODEJS</span><span class="tag">MICROSERVICES</span><span class="tag">RABBITMQ</span><span class="tag">ORACLE</span><span class="tag">REDIS</span><span class="tag">KUBERNETES</span><span class="tag">SQL</span>
+            </div>
+          </li>
+          <li class="project">
+            <p class="project-desc">Engenherou sistema crítico de pagamentos instantâneos (PIX) e boletos, implementando arquitetura de microsserviços escalável com NestJS e Kubernetes para suportar alto volume transacional.</p>
+            <div class="tags">
+              <span class="tag">NODEJS</span><span class="tag">NESTJS</span><span class="tag">KUBERNETES</span><span class="tag">REDIS</span><span class="tag">RABBITMQ</span><span class="tag">POSTGRES</span><span class="tag">SQL</span>
+            </div>
+          </li>
+          <li class="project">
+            <p class="project-desc">Orquestrou middleware de pagamentos complexo utilizando Spring Boot e AWS SQS, otimizando o throughput de transações e garantindo a resiliência via arquitetura orientada a eventos.</p>
+            <div class="tags">
+              <span class="tag">JAVA</span><span class="tag">SPRING-BOOT</span><span class="tag">MYSQL</span><span class="tag">KUBERNETES</span><span class="tag">AWS</span><span class="tag">AWS-SQS</span><span class="tag">DYNAMODB</span><span class="tag">SQL</span>
+            </div>
+          </li>
+          <li class="project">
+            <p class="project-desc">Implementou checkout transparente seguro para e-wallets, integrando DynamoDB para persistência de alta performance e elevando as taxas de conversão de pagamentos.</p>
+            <div class="tags">
+              <span class="tag">JAVA</span><span class="tag">SPRING-BOOT</span><span class="tag">MYSQL</span><span class="tag">KUBERNETES</span><span class="tag">AWS</span><span class="tag">AWS-SQS</span><span class="tag">DYNAMODB</span><span class="tag">SQL</span>
+            </div>
+          </li>
+          <li class="project">
+            <p class="project-desc">Desenvolveu APIs de Open Insurance em conformidade com regulações, criando interfaces seguras e monitoráveis via Jenkins para compartilhamento de dados sensíveis.</p>
+            <div class="tags">
+              <span class="tag">JAVA</span><span class="tag">SPRING-BOOT</span><span class="tag">SQLSERVER</span><span class="tag">JENKINS</span><span class="tag">SQL</span>
+            </div>
+          </li>
+          <li class="project">
+            <p class="project-desc">Automatizou o fluxo de solicitação de equipamentos POS integrando sistemas legados Oracle com microsserviços Node.js, reduzindo o tempo operacional de provisionamento.</p>
+            <div class="tags">
+              <span class="tag">NODEJS</span><span class="tag">NESTJS</span><span class="tag">ORACLE</span><span class="tag">JENKINS</span><span class="tag">SQL</span>
+            </div>
+          </li></ul>
+      </article>
+      <article class="job-card">
+        <header class="job-header">
+          <div>
+            <h3 class="company">ZUP I.T.</h3>
+            <p class="position">Backend Developer</p>
+          </div>
+          <div class="job-meta">
+            <span class="period">06/2021 — 02/2022</span>
+            <span class="city">Uberlandia</span>
+          </div>
+        </header>
+        <ul class="projects">
+          <li class="project">
+            <p class="project-desc">Executou a migração estratégica de 60 milhões de registros de clientes, desenhando pipelines de dados resilientes com Kafka e Spring Boot para garantir integridade e zero downtime.</p>
+            <div class="tags">
+              <span class="tag">JAVA</span><span class="tag">SPRING-BOOT</span><span class="tag">POSTGRES</span><span class="tag">AWS</span><span class="tag">AWS-SQS</span><span class="tag">KAFKA</span>
+            </div>
+          </li>
+          <li class="project">
+            <p class="project-desc">Desenvolveu plataforma de integração logística rodoviária/ferroviária usando Kotlin e GCP, otimizando a sincronização de dados em tempo real entre operadores.</p>
+            <div class="tags">
+              <span class="tag">KOTLIN</span><span class="tag">SPRING-BOOT</span><span class="tag">POSTGRES</span><span class="tag">GCP</span><span class="tag">SQL</span>
+            </div>
+          </li></ul>
+      </article>
+      <article class="job-card">
+        <header class="job-header">
+          <div>
+            <h3 class="company">TEXOIT</h3>
+            <p class="position">Developer</p>
+          </div>
+          <div class="job-meta">
+            <span class="period">02/2021 — 03/2021</span>
+            <span class="city">Joinville</span>
+          </div>
+        </header>
+        <ul class="projects">
+          <li class="project">
+            <p class="project-desc">Implementou módulo de pagamentos PIX utilizando Quarkus (Native), focando em baixo footprint de memória e alta velocidade de inicialização.</p>
+            <div class="tags">
+              <span class="tag">JAVA</span><span class="tag">QUARKUS</span><span class="tag">MYSQL</span><span class="tag">SQL</span>
+            </div>
+          </li></ul>
+      </article>
+      <article class="job-card">
+        <header class="job-header">
+          <div>
+            <h3 class="company">Z2R SISTEMAS</h3>
+            <p class="position">CTO</p>
+          </div>
+          <div class="job-meta">
+            <span class="period">03/2017 — 02/2021</span>
+            <span class="city">Balneário Camboriú</span>
+          </div>
+        </header>
+        <ul class="projects">
+          <li class="project">
+            <p class="project-desc">Liderou a arquitetura e desenvolvimento de plataforma SaaS para gestão de prontuários médicos, utilizando React e GCP para entregar uma solução escalável e segura.</p>
+            <div class="tags">
+              <span class="tag">JAVA</span><span class="tag">NODEJS</span><span class="tag">REACT</span><span class="tag">GCP</span><span class="tag">MYSQL</span><span class="tag">SQL</span>
+            </div>
+          </li>
+          <li class="project">
+            <p class="project-desc">Dirigiu o desenvolvimento full-stack de CRM especializado para Telecom, definindo stack tecnológica e processos de deploy na nuvem.</p>
+            <div class="tags">
+              <span class="tag">JAVA</span><span class="tag">NODEJS</span><span class="tag">REACT</span><span class="tag">GCP</span><span class="tag">MYSQL</span><span class="tag">SQL</span>
+            </div>
+          </li></ul>
+      </article>
+      <article class="job-card">
+        <header class="job-header">
+          <div>
+            <h3 class="company">UNIMED CHAPECÓ</h3>
+            <p class="position">Analista de Sistemas</p>
+          </div>
+          <div class="job-meta">
+            <span class="period">03/2012 — 03/2017</span>
+            <span class="city">Chapecó</span>
+          </div>
+        </header>
+        <ul class="projects">
+          <li class="project">
+            <p class="project-desc">Modernizou ecossistema hospitalar integrando bases Oracle legadas com novas interfaces Java/Node.js, aumentando a eficiência operacional das equipes médicas.</p>
+            <div class="tags">
+              <span class="tag">ORACLE</span><span class="tag">JAVA</span><span class="tag">NODEJS</span><span class="tag">SQL</span>
+            </div>
+          </li></ul>
+      </article>
+      <article class="job-card">
+        <header class="job-header">
+          <div>
+            <h3 class="company">FREELANCER</h3>
+            <p class="position">Developer</p>
+          </div>
+          <div class="job-meta">
+            <span class="period">12/2010 — 02/2012</span>
+            <span class="city">Chapecó</span>
+          </div>
+        </header>
+        <ul class="projects">
+          <li class="project">
+            <p class="project-desc">Desenvolveu e implantou CRM customizado para Telecom, utilizando ActionScript 3 para interfaces ricas e Java para backend robusto.</p>
+            <div class="tags">
+              <span class="tag">JAVA</span><span class="tag">AS3</span><span class="tag">MYSQL</span><span class="tag">SQL</span>
+            </div>
+          </li></ul>
+      </article>
+      <article class="job-card">
+        <header class="job-header">
+          <div>
+            <h3 class="company">SGI SISTEMAS LTDA</h3>
+            <p class="position">Developer</p>
+          </div>
+          <div class="job-meta">
+            <span class="period">11/2009 — 11/2010 · 08/2002 — 04/2004</span>
+            <span class="city">Chapecó</span>
+          </div>
+        </header>
+        <ul class="projects">
+          <li class="project">
+            <p class="project-desc">Otimizou ERP varejista utilizando DataFlex e Postgres, melhorando a performance de queries críticas para operações de vendas.</p>
+            <div class="tags">
+              <span class="tag">DATAFLEX</span><span class="tag">POSTGRES</span><span class="tag">SQL</span>
+            </div>
+          </li></ul>
+      </article>
+      <article class="job-card">
+        <header class="job-header">
+          <div>
+            <h3 class="company">HEXTOR SISTEMAS LTDA</h3>
+            <p class="position">Developer</p>
+          </div>
+          <div class="job-meta">
+            <span class="period">06/2008 — 02/2009</span>
+            <span class="city">Chapecó</span>
+          </div>
+        </header>
+        <ul class="projects">
+          <li class="project">
+            <p class="project-desc">Desenvolveu sistema de gestão para food-service com Delphi, focando em estabilidade e resposta rápida para frentes de caixa.</p>
+            <div class="tags">
+              <span class="tag">DELPHI</span><span class="tag">SQLSERVER</span><span class="tag">SQL</span>
+            </div>
+          </li></ul>
+      </article>
+      <article class="job-card">
+        <header class="job-header">
+          <div>
+            <h3 class="company">NM INFORMATICA LTDA</h3>
+            <p class="position">CTO</p>
+          </div>
+          <div class="job-meta">
+            <span class="period">05/2005 — 05/2008</span>
+            <span class="city">Chapecó</span>
+          </div>
+        </header>
+        <ul class="projects">
+          <li class="project">
+            <p class="project-desc">Coordenou o ciclo de vida completo de desenvolvimento de software hospitalar, migrando processos manuais para sistema integrado Delphi/Firebird.</p>
+            <div class="tags">
+              <span class="tag">DELPHI</span><span class="tag">FIREBIRD</span><span class="tag">MYSQL</span><span class="tag">JAVA</span><span class="tag">SQL</span>
+            </div>
+          </li></ul>
+      </article>
+      <article class="job-card">
+        <header class="job-header">
+          <div>
+            <h3 class="company">JB SOFTWARE LTDA</h3>
+            <p class="position">Developer</p>
+          </div>
+          <div class="job-meta">
+            <span class="period">11/2004 — 04/2005</span>
+            <span class="city">Pinhalzinho</span>
+          </div>
+        </header>
+        <ul class="projects">
+          <li class="project">
+            <p class="project-desc">Codificou módulos essenciais para sistema de RH em Delphi, garantindo cálculo preciso de folhas de pagamento.</p>
+            <div class="tags">
+              <span class="tag">DELPHI</span><span class="tag">FIREBIRD</span><span class="tag">SQL</span>
+            </div>
+          </li></ul>
+      </article>
+      <article class="job-card">
+        <header class="job-header">
+          <div>
+            <h3 class="company">FRIGORIFICO CHAPECÓ</h3>
+            <p class="position">Estagiário</p>
+          </div>
+          <div class="job-meta">
+            <span class="period">01/1999 — 03/2002</span>
+            <span class="city">Chapecó</span>
+          </div>
+        </header>
+        <ul class="projects">
+          <li class="project">
+            <p class="project-desc">Manutenção e correção de sistemas legados em ambiente industrial, garantindo a continuidade das operações de fábrica.</p>
+            <div class="tags">
+              <span class="tag">PICK-BASIC</span><span class="tag">UNIDATA</span>
+            </div>
+          </li></ul>
+      </article></div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="section-header">
+        <h2>Stack técnica</h2>
+        <span class="section-note">por tempo de experiência</span>
+      </div>
+      <div class="skills-grid">
+      <div class="skill-group">
+        <h3>Linguagens</h3>
+        <div class="tags"><span class="tag">SQL</span><span class="tag">JAVA</span><span class="tag">NODEJS</span><span class="tag">DELPHI</span><span class="tag">PICK-BASIC</span><span class="tag">DATAFLEX</span><span class="tag">AS3</span><span class="tag">KOTLIN</span></div>
+      </div>
+      <div class="skill-group">
+        <h3>Bancos de dados</h3>
+        <div class="tags"><span class="tag">MYSQL</span><span class="tag">ORACLE</span><span class="tag">POSTGRES</span><span class="tag">DYNAMODB</span><span class="tag">SQLSERVER</span><span class="tag">FIREBIRD</span><span class="tag">UNIDATA</span></div>
+      </div>
+      <div class="skill-group">
+        <h3>Ferramentas</h3>
+        <div class="tags"><span class="tag">KUBERNETES</span><span class="tag">AWS-SQS</span><span class="tag">RABBITMQ</span><span class="tag">JENKINS</span><span class="tag">REDIS</span><span class="tag">KAFKA</span></div>
+      </div>
+      <div class="skill-group">
+        <h3>Frameworks</h3>
+        <div class="tags"><span class="tag">SPRING-BOOT</span><span class="tag">NESTJS</span><span class="tag">REACT</span></div>
+      </div>
+      <div class="skill-group">
+        <h3>Cloud</h3>
+        <div class="tags"><span class="tag">AWS</span><span class="tag">GCP</span></div>
+      </div>
+      <div class="skill-group">
+        <h3>Outros</h3>
+        <div class="tags"><span class="tag">MICROSERVICES</span><span class="tag">QUARKUS</span></div>
+      </div></div>
+    </section>
+
+    <section class="section" id="formacao">
+      <div class="section-header">
+        <h2>Formação acadêmica</h2>
+      </div>
+      <div class="education-grid">
+      <article class="education-card">
+        <h3>UNOCHAPECO</h3>
+        <p>Pós-graduação em Desenvolvimento Web</p>
+        <span class="edu-year">2010 - 2011</span>
+      </article>
+      <article class="education-card">
+        <h3>UNOESC</h3>
+        <p>Análise e Desenvolvimento de Sistemas</p>
+        <span class="edu-year">2001 - 2004</span>
+      </article></div>
+    </section>
+
+    <footer class="footer">
+      <p>Gerado a partir de <code>data/database.json</code> · Atualizado em 26/06/2026</p>
+    </footer>
+  </main>
+</body>
+</html>

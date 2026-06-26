@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Gerador de Currículo
 
-## Getting Started
+Projeto para gerar e publicar o currículo do Emerson Figueira.
 
-First, run the development server:
+## Estrutura
+
+- `data/database.json` — experiências, contatos e projetos
+- `data/site.json` — resumo, título e formação acadêmica do site
+- `tools/build-site.js` — gera o site estático em `docs/`
+- `docs/` — saída publicada no GitHub Pages
+
+## Atualizar o currículo
+
+1. Edite `data/database.json` (e `data/site.json`, se quiser mudar resumo ou formação)
+2. Gere o site:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build:site
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Confira localmente abrindo `docs/index.html` no navegador
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Publicar no GitHub Pages
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Opção automática (recomendada)
 
-## Learn More
+1. Faça push do repositório para o GitHub
+2. Em **Settings → Pages**, em **Build and deployment**, escolha **GitHub Actions**
+3. A cada push na branch `main` (ou `master`), o workflow `.github/workflows/pages.yml` publica o site
 
-To learn more about Next.js, take a look at the following resources:
+URL esperada:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Repositório `eafigueira.github.io` → `https://eafigueira.github.io`
+- Outro repositório (ex.: `gerador-curriculo`) → `https://eafigueira.github.io/gerador-curriculo`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Opção manual
 
-## Deploy on Vercel
+1. Rode `npm run build:site`
+2. Em **Settings → Pages**, selecione a branch `main` e a pasta `/docs`
+3. Faça commit da pasta `docs/` e push
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## App Next.js (visualização local)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Para a versão interativa usada na geração de PDF:
+
+```bash
+npm install
+npm run dev
+```
+
+Abra [http://localhost:3000](http://localhost:3000).
