@@ -31,7 +31,7 @@
                         "description": "Atua como Especialista Técnico em squad de alta performance, arquitetando um motor de decisão de crédito e processamento de pagamentos que suporta milhares de requisições simultâneas. Projetou a solução utilizando microsserviços híbridos (Java/Node.js) com RabbitMQ para orquestração assíncrona e Oracle para consistência transacional, garantindo baixa latência e integração resiliente com múltiplos ecossistemas bancários.",
                         "stack": [
                             "JAVA",
-                            "NODEJS",
+                            "JAVASCRIPT",
                             "MICROSERVICES",
                             "RABBITMQ",
                             "ORACLE",
@@ -43,7 +43,7 @@
                     {
                         "description": "Engenherou sistema crítico de pagamentos instantâneos (PIX) e boletos, implementando arquitetura de microsserviços escalável com NestJS e Kubernetes para suportar alto volume transacional.",
                         "stack": [
-                            "NODEJS",
+                            "JAVASCRIPT",
                             "NESTJS",
                             "KUBERNETES",
                             "REDIS",
@@ -91,7 +91,7 @@
                     {
                         "description": "Automatizou o fluxo de solicitação de equipamentos POS integrando sistemas legados Oracle com microsserviços Node.js, reduzindo o tempo operacional de provisionamento.",
                         "stack": [
-                            "NODEJS",
+                            "JAVASCRIPT",
                             "NESTJS",
                             "ORACLE",
                             "JENKINS",
@@ -171,7 +171,7 @@
                         "description": "Liderou a arquitetura e desenvolvimento de plataforma SaaS para gestão de prontuários médicos, utilizando React e GCP para entregar uma solução escalável e segura.",
                         "stack": [
                             "JAVA",
-                            "NODEJS",
+                            "JAVASCRIPT",
                             "REACT",
                             "GCP",
                             "MYSQL",
@@ -182,7 +182,7 @@
                         "description": "Dirigiu o desenvolvimento full-stack de CRM especializado para Telecom, definindo stack tecnológica e processos de deploy na nuvem.",
                         "stack": [
                             "JAVA",
-                            "NODEJS",
+                            "JAVASCRIPT",
                             "REACT",
                             "GCP",
                             "MYSQL",
@@ -207,7 +207,7 @@
                         "stack": [
                             "ORACLE",
                             "JAVA",
-                            "NODEJS",
+                            "JAVASCRIPT",
                             "SQL"
                         ]
                     }
