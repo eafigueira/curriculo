@@ -248,6 +248,27 @@
       font-size: 0.92rem;
     }
 
+    .contributions-card {
+      padding: 1.25rem;
+      border-radius: var(--radius);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      overflow-x: auto;
+    }
+
+    .contributions-card a {
+      display: block;
+      width: fit-content;
+      margin: 0 auto;
+    }
+
+    .contributions-chart {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
     .footer {
       margin-top: 3rem;
       text-align: center;
@@ -269,7 +290,7 @@
 
     @media print {
       body { background: white; color: #111; }
-      .hero, .job-card, .education-card, .skill-group, .contacts {
+      .hero, .job-card, .education-card, .skill-group, .contacts, .contributions-card {
         box-shadow: none;
         background: white;
         border-color: #ddd;
@@ -294,7 +315,7 @@
       </div>
 
       <div class="top-skills" aria-label="Principais tecnologias">
-        <span class="tag tag-highlight">SQL</span><span class="tag tag-highlight">JAVA</span><span class="tag tag-highlight">NODEJS</span><span class="tag tag-highlight">MYSQL</span><span class="tag tag-highlight">KUBERNETES</span><span class="tag tag-highlight">SPRING-BOOT</span><span class="tag tag-highlight">ORACLE</span><span class="tag tag-highlight">AWS</span><span class="tag tag-highlight">AWS-SQS</span><span class="tag tag-highlight">GCP</span><span class="tag tag-highlight">RABBITMQ</span><span class="tag tag-highlight">REDIS</span>
+        <span class="tag tag-highlight">SQL</span><span class="tag tag-highlight">JAVA</span><span class="tag tag-highlight">NODEJS</span><span class="tag tag-highlight">MYSQL</span><span class="tag tag-highlight">KUBERNETES</span><span class="tag tag-highlight">SPRING-BOOT</span><span class="tag tag-highlight">ORACLE</span><span class="tag tag-highlight">AWS</span><span class="tag tag-highlight">AWS-SQS</span><span class="tag tag-highlight">RABBITMQ</span><span class="tag tag-highlight">REDIS</span><span class="tag tag-highlight">NESTJS</span>
       </div>
     </section>
 
@@ -311,7 +332,7 @@
             <p class="position">Java/Node Specialist</p>
           </div>
           <div class="job-meta">
-            <span class="period">03/2022 — 03/2026</span>
+            <span class="period">03/2022 — Atualmente</span>
             <span class="city">Campinas</span>
           </div>
         </header>
@@ -569,7 +590,7 @@
       </div>
       <div class="skill-group">
         <h3>Bancos de dados</h3>
-        <div class="tags"><span class="tag">MYSQL</span><span class="tag">ORACLE</span><span class="tag">POSTGRES</span><span class="tag">DYNAMODB</span><span class="tag">SQLSERVER</span><span class="tag">FIREBIRD</span><span class="tag">UNIDATA</span></div>
+        <div class="tags"><span class="tag">MYSQL</span><span class="tag">ORACLE</span><span class="tag">DYNAMODB</span><span class="tag">POSTGRES</span><span class="tag">SQLSERVER</span><span class="tag">FIREBIRD</span><span class="tag">UNIDATA</span></div>
       </div>
       <div class="skill-group">
         <h3>Ferramentas</h3>
@@ -587,6 +608,26 @@
         <h3>Outros</h3>
         <div class="tags"><span class="tag">MICROSERVICES</span><span class="tag">QUARKUS</span></div>
       </div></div>
+    </section>
+
+    
+    <section class="section" id="github">
+      <div class="section-header">
+        <h2>Contribuições no GitHub</h2>
+        <span class="section-note">último ano · <a href="https://github.com/eafigueira" target="_blank" rel="noopener noreferrer">@eafigueira</a></span>
+      </div>
+      <div class="contributions-card">
+        <a href="https://github.com/eafigueira" target="_blank" rel="noopener noreferrer" aria-label="Ver perfil no GitHub">
+          <img
+            class="contributions-chart"
+            src="https://ghchart.rshah.org/eafigueira?color=3dd6c6&shade=1a2230"
+            alt="Contribuições no GitHub de Emerson Figueira no último ano"
+            loading="lazy"
+            width="722"
+            height="112"
+          />
+        </a>
+      </div>
     </section>
 
     <section class="section" id="formacao">

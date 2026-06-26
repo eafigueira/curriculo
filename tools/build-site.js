@@ -135,6 +135,46 @@ function skillTypeLabel(type) {
   return labels[type] || type;
 }
 
+function getGithubUsername(user) {
+  const github = user.contacts?.find((contact) => contact.type === "GITHUB");
+  if (!github) {
+    return null;
+  }
+
+  const match = github.contact.match(/github\.com\/([^/?#]+)/i);
+  return match ? match[1] : null;
+}
+
+function buildContributionsSection(user) {
+  const username = getGithubUsername(user);
+  if (!username) {
+    return "";
+  }
+
+  const profileUrl = `https://github.com/${username}`;
+  const chartUrl = `https://ghchart.rshah.org/${encodeURIComponent(username)}?color=3dd6c6&shade=1a2230`;
+
+  return `
+    <section class="section" id="github">
+      <div class="section-header">
+        <h2>Contribuições no GitHub</h2>
+        <span class="section-note">último ano · <a href="${profileUrl}" target="_blank" rel="noopener noreferrer">@${escapeHtml(username)}</a></span>
+      </div>
+      <div class="contributions-card">
+        <a href="${profileUrl}" target="_blank" rel="noopener noreferrer" aria-label="Ver perfil no GitHub">
+          <img
+            class="contributions-chart"
+            src="${chartUrl}"
+            alt="Contribuições no GitHub de ${escapeHtml(user.name)} no último ano"
+            loading="lazy"
+            width="722"
+            height="112"
+          />
+        </a>
+      </div>
+    </section>`;
+}
+
 function buildHtml(user) {
   const jobs = [...user.jobs].sort(
     (a, b) => parseDate(b.period[0].startDate).getTime() - parseDate(a.period[0].startDate).getTime()
@@ -209,6 +249,8 @@ function buildHtml(user) {
   const topSkillsHtml = topSkills
     .map((skill) => `<span class="tag tag-highlight">${escapeHtml(skill.name)}</span>`)
     .join("");
+
+  const contributionsHtml = buildContributionsSection(user);
 
   return `<!DOCTYPE html>
 <html lang="pt-BR">
@@ -460,6 +502,27 @@ function buildHtml(user) {
       font-size: 0.92rem;
     }
 
+    .contributions-card {
+      padding: 1.25rem;
+      border-radius: var(--radius);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      overflow-x: auto;
+    }
+
+    .contributions-card a {
+      display: block;
+      width: fit-content;
+      margin: 0 auto;
+    }
+
+    .contributions-chart {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
     .footer {
       margin-top: 3rem;
       text-align: center;
@@ -481,7 +544,7 @@ function buildHtml(user) {
 
     @media print {
       body { background: white; color: #111; }
-      .hero, .job-card, .education-card, .skill-group, .contacts {
+      .hero, .job-card, .education-card, .skill-group, .contacts, .contributions-card {
         box-shadow: none;
         background: white;
         border-color: #ddd;
@@ -525,6 +588,8 @@ function buildHtml(user) {
       </div>
       <div class="skills-grid">${skillGroupsHtml}</div>
     </section>
+
+    ${contributionsHtml}
 
     <section class="section" id="formacao">
       <div class="section-header">
