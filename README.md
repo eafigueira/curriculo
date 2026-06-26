@@ -22,7 +22,14 @@ npm run build:site
 
 ## Publicar no GitHub Pages
 
-### Opção automática (recomendada)
+### 1. Nome do repositório
+
+A URL do site segue o nome do repositório no GitHub. Para ficar em `https://eafigueira.github.io/curriculo`, o repositório precisa se chamar **`curriculo`**.
+
+Se ainda estiver como `gerador-curriculo`, renomeie em:
+**Settings → General → Repository name → `curriculo`**
+
+### 2. Deploy automático (recomendado)
 
 1. Faça push do repositório para o GitHub
 2. Em **Settings → Pages**, em **Build and deployment**, escolha **GitHub Actions**
@@ -31,7 +38,7 @@ npm run build:site
 URL esperada:
 
 - Repositório `eafigueira.github.io` → `https://eafigueira.github.io`
-- Outro repositório (ex.: `gerador-curriculo`) → `https://eafigueira.github.io/gerador-curriculo`
+- Repositório `curriculo` → `https://eafigueira.github.io/curriculo`
 
 ### Opção manual
 
