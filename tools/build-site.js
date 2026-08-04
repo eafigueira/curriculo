@@ -543,6 +543,11 @@ function buildHtml(user) {
       outline-offset: 2px;
     }
 
+    .pdf-btn:disabled {
+      opacity: 0.7;
+      cursor: wait;
+    }
+
     @media (max-width: 640px) {
       body { font-size: 14.5px; }
       .page { width: min(calc(100% - 1.5rem), var(--max)); padding-top: 1.5rem; }
@@ -553,6 +558,7 @@ function buildHtml(user) {
     }
 
     @media print {
+      @page { margin: 12mm; }
       body { font-size: 11pt; }
       .page { width: 100%; max-width: none; padding: 0; }
       .toolbar,
@@ -566,10 +572,11 @@ function buildHtml(user) {
 </head>
 <body>
   <main class="page">
-    <div class="toolbar no-print">
+    <div class="toolbar">
       <button type="button" class="pdf-btn" id="download-pdf">Baixar PDF</button>
     </div>
 
+    <div id="resume">
     <header class="header">
       <h1>${escapeHtml(user.name)}</h1>
       <p class="role">${escapeHtml(site.title)}</p>
@@ -602,17 +609,56 @@ function buildHtml(user) {
 
     ${certificationsSection}
     ${languagesSection}
+    </div>
+
     ${contributionsHtml}
   </main>
   <script>
     (function () {
       var btn = document.getElementById("download-pdf");
-      if (!btn) return;
+      var resume = document.getElementById("resume");
+      if (!btn || !resume) return;
+
+      var scriptUrl = "https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js";
+      var filename = ${JSON.stringify(pdfFilename + ".pdf")};
+
+      function loadHtml2Pdf() {
+        if (window.html2pdf) return Promise.resolve();
+        return new Promise(function (resolve, reject) {
+          var script = document.createElement("script");
+          script.src = scriptUrl;
+          script.onload = resolve;
+          script.onerror = function () { reject(new Error("Falha ao carregar gerador de PDF")); };
+          document.head.appendChild(script);
+        });
+      }
+
       btn.addEventListener("click", function () {
-        var previousTitle = document.title;
-        document.title = ${JSON.stringify(pdfFilename)};
-        window.print();
-        document.title = previousTitle;
+        var originalLabel = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = "Gerando PDF…";
+
+        loadHtml2Pdf()
+          .then(function () {
+            return window.html2pdf()
+              .set({
+                margin: [10, 12, 10, 12],
+                filename: filename,
+                image: { type: "jpeg", quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true, logging: false },
+                jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+                pagebreak: { mode: ["css", "legacy"] }
+              })
+              .from(resume)
+              .save();
+          })
+          .catch(function () {
+            window.print();
+          })
+          .finally(function () {
+            btn.disabled = false;
+            btn.textContent = originalLabel;
+          });
       });
     })();
   </script>
