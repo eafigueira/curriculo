@@ -610,7 +610,7 @@ function buildHtml(user) {
       if (!btn) return;
       btn.addEventListener("click", function () {
         var previousTitle = document.title;
-        document.title = ${JSON.stringify(pdfFilename.replace(/\\.pdf$/i, ""))};
+        document.title = ${JSON.stringify(pdfFilename)};
         window.print();
         document.title = previousTitle;
       });
