@@ -559,15 +559,45 @@ function buildHtml(user) {
     }
 
     @media print {
-      @page { margin: 12mm; }
+      @page {
+        size: A4;
+        margin: 14mm 12mm 22mm 12mm;
+      }
+
       body { font-size: 11pt; }
-      .page { width: 100%; max-width: none; padding: 0; }
+
+      .page {
+        width: 100%;
+        max-width: none;
+        padding: 0;
+      }
+
       .toolbar,
       .contributions,
       #github { display: none !important; }
+
       a { color: inherit; text-decoration: none; }
       .header .contacts a { color: var(--muted); }
       .company { color: var(--accent); }
+
+      .job,
+      .edu-item,
+      .bullets li,
+      .skill-line,
+      .job-stack {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .job {
+        orphans: 3;
+        widows: 3;
+      }
+
+      p, li {
+        orphans: 2;
+        widows: 2;
+      }
     }
   </style>
 </head>
@@ -658,9 +688,10 @@ function buildPdf(htmlPath, pdfPath) {
       "--headless=new",
       "--disable-gpu",
       "--no-pdf-header-footer",
+      "--no-margins",
       `--print-to-pdf=${pdfPath}`,
       "--run-all-compositor-stages-before-draw",
-      "--virtual-time-budget=5000",
+      "--virtual-time-budget=8000",
       fileUrl,
     ],
     { encoding: "utf8" }
