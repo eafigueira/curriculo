@@ -192,7 +192,16 @@ function buildHtml(user) {
     }
   });
 
+  const siteUrl = site.url || "";
+  if (siteUrl) {
+    const siteLabel = siteUrl.replace(/^https?:\/\//, "").replace(/\/$/, "");
+    contactParts.push(
+      `<a href="${escapeHtml(siteUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(siteLabel)}</a>`
+    );
+  }
+
   const contactsHtml = contactParts.join('<span class="sep" aria-hidden="true">|</span>');
+  const pdfFilename = `${(user.name || "curriculo").toLowerCase().replace(/\s+/g, "-")}-curriculo`;
 
   const jobsHtml = jobs
     .map((job) => {
@@ -505,24 +514,62 @@ function buildHtml(user) {
       font-size: 0.88rem;
     }
 
+    .toolbar {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 1rem;
+    }
+
+    .pdf-btn {
+      appearance: none;
+      border: 1.5px solid var(--accent);
+      background: var(--accent);
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.55rem 1rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .pdf-btn:hover {
+      background: #23406a;
+      border-color: #23406a;
+    }
+
+    .pdf-btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
     @media (max-width: 640px) {
       body { font-size: 14.5px; }
       .page { width: min(calc(100% - 1.5rem), var(--max)); padding-top: 1.5rem; }
       .meta { white-space: normal; display: inline; }
       .summary, .bullets li { text-align: left; }
+      .toolbar { justify-content: stretch; }
+      .pdf-btn { width: 100%; }
     }
 
     @media print {
       body { font-size: 11pt; }
       .page { width: 100%; max-width: none; padding: 0; }
-      .contributions { display: none; }
+      .toolbar,
+      .contributions,
+      #github { display: none !important; }
       a { color: inherit; text-decoration: none; }
       .header .contacts a { color: var(--muted); }
+      .company { color: var(--accent); }
     }
   </style>
 </head>
 <body>
   <main class="page">
+    <div class="toolbar no-print">
+      <button type="button" class="pdf-btn" id="download-pdf">Baixar PDF</button>
+    </div>
+
     <header class="header">
       <h1>${escapeHtml(user.name)}</h1>
       <p class="role">${escapeHtml(site.title)}</p>
@@ -557,6 +604,18 @@ function buildHtml(user) {
     ${languagesSection}
     ${contributionsHtml}
   </main>
+  <script>
+    (function () {
+      var btn = document.getElementById("download-pdf");
+      if (!btn) return;
+      btn.addEventListener("click", function () {
+        var previousTitle = document.title;
+        document.title = ${JSON.stringify(pdfFilename.replace(/\\.pdf$/i, ""))};
+        window.print();
+        document.title = previousTitle;
+      });
+    })();
+  </script>
 </body>
 </html>`;
 }
