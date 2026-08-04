@@ -522,6 +522,9 @@ function buildHtml(user) {
 
     .pdf-btn {
       appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       border: 1.5px solid var(--accent);
       background: var(--accent);
       color: #fff;
@@ -531,21 +534,19 @@ function buildHtml(user) {
       padding: 0.55rem 1rem;
       cursor: pointer;
       line-height: 1;
+      text-decoration: none;
     }
 
     .pdf-btn:hover {
       background: #23406a;
       border-color: #23406a;
+      color: #fff;
+      text-decoration: none;
     }
 
     .pdf-btn:focus-visible {
       outline: 2px solid var(--accent);
       outline-offset: 2px;
-    }
-
-    .pdf-btn:disabled {
-      opacity: 0.7;
-      cursor: wait;
     }
 
     @media (max-width: 640px) {
@@ -573,10 +574,9 @@ function buildHtml(user) {
 <body>
   <main class="page">
     <div class="toolbar">
-      <button type="button" class="pdf-btn" id="download-pdf">Baixar PDF</button>
+      <a class="pdf-btn" href="${escapeHtml(pdfFilename)}.pdf" download="${escapeHtml(pdfFilename)}.pdf">Baixar PDF</a>
     </div>
 
-    <div id="resume">
     <header class="header">
       <h1>${escapeHtml(user.name)}</h1>
       <p class="role">${escapeHtml(site.title)}</p>
@@ -609,61 +609,69 @@ function buildHtml(user) {
 
     ${certificationsSection}
     ${languagesSection}
-    </div>
-
     ${contributionsHtml}
   </main>
-  <script>
-    (function () {
-      var btn = document.getElementById("download-pdf");
-      var resume = document.getElementById("resume");
-      if (!btn || !resume) return;
-
-      var scriptUrl = "https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js";
-      var filename = ${JSON.stringify(pdfFilename + ".pdf")};
-
-      function loadHtml2Pdf() {
-        if (window.html2pdf) return Promise.resolve();
-        return new Promise(function (resolve, reject) {
-          var script = document.createElement("script");
-          script.src = scriptUrl;
-          script.onload = resolve;
-          script.onerror = function () { reject(new Error("Falha ao carregar gerador de PDF")); };
-          document.head.appendChild(script);
-        });
-      }
-
-      btn.addEventListener("click", function () {
-        var originalLabel = btn.textContent;
-        btn.disabled = true;
-        btn.textContent = "Gerando PDF…";
-
-        loadHtml2Pdf()
-          .then(function () {
-            return window.html2pdf()
-              .set({
-                margin: [10, 12, 10, 12],
-                filename: filename,
-                image: { type: "jpeg", quality: 0.98 },
-                html2canvas: { scale: 2, useCORS: true, logging: false },
-                jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-                pagebreak: { mode: ["css", "legacy"] }
-              })
-              .from(resume)
-              .save();
-          })
-          .catch(function () {
-            window.print();
-          })
-          .finally(function () {
-            btn.disabled = false;
-            btn.textContent = originalLabel;
-          });
-      });
-    })();
-  </script>
 </body>
 </html>`;
+}
+
+function findChrome() {
+  const candidates = [
+    "google-chrome",
+    "google-chrome-stable",
+    "chromium-browser",
+    "chromium",
+    "/usr/bin/google-chrome",
+    "/usr/bin/chromium-browser",
+    "/usr/bin/chromium",
+  ];
+
+  for (const candidate of candidates) {
+    try {
+      const result = require("child_process").spawnSync(candidate, ["--version"], {
+        encoding: "utf8",
+        stdio: ["ignore", "pipe", "ignore"],
+      });
+      if (result.status === 0) {
+        return candidate;
+      }
+    } catch (_) {
+      // try next
+    }
+  }
+
+  return null;
+}
+
+function buildPdf(htmlPath, pdfPath) {
+  const chrome = findChrome();
+  if (!chrome) {
+    console.warn("Chrome/Chromium não encontrado — PDF não gerado. Instale o Chrome e rode npm run build:site de novo.");
+    return false;
+  }
+
+  const { spawnSync } = require("child_process");
+  const fileUrl = `file://${htmlPath}`;
+  const result = spawnSync(
+    chrome,
+    [
+      "--headless=new",
+      "--disable-gpu",
+      "--no-pdf-header-footer",
+      `--print-to-pdf=${pdfPath}`,
+      "--run-all-compositor-stages-before-draw",
+      "--virtual-time-budget=5000",
+      fileUrl,
+    ],
+    { encoding: "utf8" }
+  );
+
+  if (result.status !== 0 || !fs.existsSync(pdfPath)) {
+    console.warn("Falha ao gerar PDF:", result.stderr || result.stdout || `exit ${result.status}`);
+    return false;
+  }
+
+  return true;
 }
 
 function main() {
@@ -676,10 +684,17 @@ function main() {
     fs.mkdirSync(OUT_DIR, { recursive: true });
   }
 
+  const pdfFilename = `${(user.name || "curriculo").toLowerCase().replace(/\s+/g, "-")}-curriculo`;
   const html = buildHtml(user);
-  fs.writeFileSync(path.join(OUT_DIR, "index.html"), html, "utf8");
+  const htmlPath = path.join(OUT_DIR, "index.html");
+  const pdfPath = path.join(OUT_DIR, `${pdfFilename}.pdf`);
 
+  fs.writeFileSync(htmlPath, html, "utf8");
   console.log("Site estático gerado em docs/index.html");
+
+  if (buildPdf(htmlPath, pdfPath)) {
+    console.log(`PDF gerado em docs/${pdfFilename}.pdf`);
+  }
 }
 
 main();

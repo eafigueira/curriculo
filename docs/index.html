@@ -226,6 +226,9 @@
 
     .pdf-btn {
       appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       border: 1.5px solid var(--accent);
       background: var(--accent);
       color: #fff;
@@ -235,21 +238,19 @@
       padding: 0.55rem 1rem;
       cursor: pointer;
       line-height: 1;
+      text-decoration: none;
     }
 
     .pdf-btn:hover {
       background: #23406a;
       border-color: #23406a;
+      color: #fff;
+      text-decoration: none;
     }
 
     .pdf-btn:focus-visible {
       outline: 2px solid var(--accent);
       outline-offset: 2px;
-    }
-
-    .pdf-btn:disabled {
-      opacity: 0.7;
-      cursor: wait;
     }
 
     @media (max-width: 640px) {
@@ -277,10 +278,9 @@
 <body>
   <main class="page">
     <div class="toolbar">
-      <button type="button" class="pdf-btn" id="download-pdf">Baixar PDF</button>
+      <a class="pdf-btn" href="emerson-figueira-curriculo.pdf" download="emerson-figueira-curriculo.pdf">Baixar PDF</a>
     </div>
 
-    <div id="resume">
     <header class="header">
       <h1>Emerson Figueira</h1>
       <p class="role">Java Senior | Especialista Backend</p>
@@ -453,8 +453,6 @@
 
     
     
-    </div>
-
     
     <section class="section" id="github">
       <h2>Contribuições no GitHub</h2>
@@ -473,54 +471,5 @@
       </div>
     </section>
   </main>
-  <script>
-    (function () {
-      var btn = document.getElementById("download-pdf");
-      var resume = document.getElementById("resume");
-      if (!btn || !resume) return;
-
-      var scriptUrl = "https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js";
-      var filename = "emerson-figueira-curriculo.pdf";
-
-      function loadHtml2Pdf() {
-        if (window.html2pdf) return Promise.resolve();
-        return new Promise(function (resolve, reject) {
-          var script = document.createElement("script");
-          script.src = scriptUrl;
-          script.onload = resolve;
-          script.onerror = function () { reject(new Error("Falha ao carregar gerador de PDF")); };
-          document.head.appendChild(script);
-        });
-      }
-
-      btn.addEventListener("click", function () {
-        var originalLabel = btn.textContent;
-        btn.disabled = true;
-        btn.textContent = "Gerando PDF…";
-
-        loadHtml2Pdf()
-          .then(function () {
-            return window.html2pdf()
-              .set({
-                margin: [10, 12, 10, 12],
-                filename: filename,
-                image: { type: "jpeg", quality: 0.98 },
-                html2canvas: { scale: 2, useCORS: true, logging: false },
-                jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-                pagebreak: { mode: ["css", "legacy"] }
-              })
-              .from(resume)
-              .save();
-          })
-          .catch(function () {
-            window.print();
-          })
-          .finally(function () {
-            btn.disabled = false;
-            btn.textContent = originalLabel;
-          });
-      });
-    })();
-  </script>
 </body>
 </html>
