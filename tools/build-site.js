@@ -561,23 +561,6 @@ function buildHtml(user) {
 </html>`;
 }
 
-function copyPhotoIfExists() {
-  const imagesDir = path.join(ROOT, "data/images");
-  const photoPng = path.join(imagesDir, "photo.png");
-  const photoJpg = path.join(imagesDir, "photo.jpg");
-  const outImages = path.join(OUT_DIR, "images");
-
-  if (!fs.existsSync(outImages)) {
-    fs.mkdirSync(outImages, { recursive: true });
-  }
-
-  if (fs.existsSync(photoPng)) {
-    fs.copyFileSync(photoPng, path.join(outImages, "photo.png"));
-  } else if (fs.existsSync(photoJpg)) {
-    fs.copyFileSync(photoJpg, path.join(outImages, "photo.jpg"));
-  }
-}
-
 function main() {
   const user = database[0];
   if (!user) {
@@ -590,7 +573,6 @@ function main() {
 
   const html = buildHtml(user);
   fs.writeFileSync(path.join(OUT_DIR, "index.html"), html, "utf8");
-  copyPhotoIfExists();
 
   console.log("Site estático gerado em docs/index.html");
 }
