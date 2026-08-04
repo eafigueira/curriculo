@@ -35,9 +35,9 @@ function formatPeriod(period) {
   return period
     .map((item) => {
       if (item.endDate) {
-        return `${item.startDate} — ${item.endDate}`;
+        return `${item.startDate} – ${item.endDate}`;
       }
-      return `${item.startDate} — Atualmente`;
+      return `${item.startDate} – Atual`;
     })
     .join(" · ");
 }
@@ -86,30 +86,27 @@ function escapeHtml(value) {
     .replace(/"/g, "&quot;");
 }
 
-function contactLink(type, contact) {
-  const label = escapeHtml(contact);
+function contactDisplay(type, contact) {
   switch (type) {
     case "EMAIL":
-      return `<a href="mailto:${escapeHtml(contact)}">${label}</a>`;
-    case "GITHUB":
-      return `<a href="${escapeHtml(contact)}" target="_blank" rel="noopener noreferrer">${label}</a>`;
+      return { href: `mailto:${contact}`, label: contact };
+    case "GITHUB": {
+      const match = contact.match(/github\.com\/([^/?#]+)/i);
+      const label = match ? `github.com/${match[1]}` : contact.replace(/^https?:\/\//, "");
+      return { href: contact, label };
+    }
     case "X":
-      return `<a href="https://x.com/${escapeHtml(contact.replace("@", ""))}" target="_blank" rel="noopener noreferrer">${label}</a>`;
-    case "LINKEDIN":
-      return `<a href="${escapeHtml(contact)}" target="_blank" rel="noopener noreferrer">${label}</a>`;
+      return { href: `https://x.com/${contact.replace("@", "")}`, label: contact };
+    case "LINKEDIN": {
+      const match = contact.match(/linkedin\.com\/in\/([^/?#]+)/i);
+      const label = match ? `linkedin.com/in/${match[1]}` : contact.replace(/^https?:\/\//, "");
+      return { href: contact, label };
+    }
+    case "PHONE":
+      return { href: `tel:${contact.replace(/\D/g, "")}`, label: contact };
     default:
-      return label;
+      return { href: null, label: contact };
   }
-}
-
-function contactIcon(type) {
-  const icons = {
-    EMAIL: "✉",
-    GITHUB: "⌘",
-    X: "𝕏",
-    LINKEDIN: "in",
-  };
-  return icons[type] || "•";
 }
 
 function groupSkillsByType(skills) {
@@ -129,7 +126,7 @@ function skillTypeLabel(type) {
     FRAMEWORK: "Frameworks",
     DATABASE: "Bancos de dados",
     CLOUD: "Cloud",
-    TOOL: "Ferramentas",
+    TOOL: "Ferramentas & Infra",
     OTHER: "Outros",
   };
   return labels[type] || type;
@@ -152,15 +149,12 @@ function buildContributionsSection(user) {
   }
 
   const profileUrl = `https://github.com/${username}`;
-  const chartUrl = `https://ghchart.rshah.org/${encodeURIComponent(username)}?color=3dd6c6&shade=1a2230`;
+  const chartUrl = `https://ghchart.rshah.org/2b4c7e/${encodeURIComponent(username)}`;
 
   return `
     <section class="section" id="github">
-      <div class="section-header">
-        <h2>Contribuições no GitHub</h2>
-        <span class="section-note">último ano · <a href="${profileUrl}" target="_blank" rel="noopener noreferrer">@${escapeHtml(username)}</a></span>
-      </div>
-      <div class="contributions-card">
+      <h2>Contribuições no GitHub</h2>
+      <div class="contributions">
         <a href="${profileUrl}" target="_blank" rel="noopener noreferrer" aria-label="Ver perfil no GitHub">
           <img
             class="contributions-chart"
@@ -171,6 +165,7 @@ function buildContributionsSection(user) {
             height="112"
           />
         </a>
+        <p class="contrib-note">último ano · <a href="${profileUrl}" target="_blank" rel="noopener noreferrer">@${escapeHtml(username)}</a></p>
       </div>
     </section>`;
 }
@@ -181,42 +176,48 @@ function buildHtml(user) {
   );
   const skills = summarizeHardSkills(jobs);
   const skillGroups = groupSkillsByType(skills);
-  const topSkills = skills.slice(0, 12);
 
-  const contactsHtml = user.contacts
-    .map(
-      (item) =>
-        `<li><span class="contact-icon" aria-hidden="true">${contactIcon(item.type)}</span>${contactLink(item.type, item.contact)}</li>`
-    )
-    .join("");
+  const contactParts = [];
+  if (site.location) {
+    contactParts.push(`<span>${escapeHtml(site.location)}</span>`);
+  }
+  (user.contacts || []).forEach((item) => {
+    const { href, label } = contactDisplay(item.type, item.contact);
+    if (href) {
+      contactParts.push(
+        `<a href="${escapeHtml(href)}"${item.type !== "EMAIL" && item.type !== "PHONE" ? ' target="_blank" rel="noopener noreferrer"' : ""}>${escapeHtml(label)}</a>`
+      );
+    } else {
+      contactParts.push(`<span>${escapeHtml(label)}</span>`);
+    }
+  });
+
+  const contactsHtml = contactParts.join('<span class="sep" aria-hidden="true">|</span>');
 
   const jobsHtml = jobs
     .map((job) => {
       const projectsHtml = job.projects
-        .map(
-          (project) => `
-          <li class="project">
-            <p class="project-desc">${escapeHtml(project.description)}</p>
-            <div class="tags">
-              ${project.stack.map((tech) => `<span class="tag">${escapeHtml(tech)}</span>`).join("")}
-            </div>
-          </li>`
-        )
+        .map((project) => `<li>${escapeHtml(project.description)}</li>`)
         .join("");
 
+      const stackSet = [...new Set(job.projects.flatMap((p) => p.stack || []))];
+      const stackLine =
+        stackSet.length > 0
+          ? `<p class="job-stack"><strong>Stack:</strong> ${stackSet.map(escapeHtml).join(", ")}</p>`
+          : "";
+
       return `
-      <article class="job-card">
+      <article class="job">
         <header class="job-header">
-          <div>
-            <h3 class="company">${escapeHtml(job.company)}</h3>
-            <p class="position">${escapeHtml(job.position)}</p>
-          </div>
-          <div class="job-meta">
-            <span class="period">${escapeHtml(formatPeriod(job.period))}</span>
-            <span class="city">${escapeHtml(job.city)}</span>
-          </div>
+          <p class="job-title">
+            <strong>${escapeHtml(job.position)}</strong>
+            <span class="emdash">—</span>
+            <span class="company">${escapeHtml(job.company)}</span>
+            <span class="meta">${escapeHtml(formatPeriod(job.period))}${job.city ? ` | ${escapeHtml(job.city)}` : ""}</span>
+          </p>
         </header>
-        <ul class="projects">${projectsHtml}</ul>
+        <ul class="bullets">${projectsHtml}</ul>
+        ${stackLine}
       </article>`;
     })
     .join("");
@@ -224,33 +225,65 @@ function buildHtml(user) {
   const educationHtml = (site.education || [])
     .map(
       (edu) => `
-      <article class="education-card">
-        <h3>${escapeHtml(edu.school)}</h3>
-        <p>${escapeHtml(edu.course)}</p>
-        <span class="edu-year">${escapeHtml(edu.year)}</span>
-      </article>`
+      <p class="edu-item">
+        <strong>${escapeHtml(edu.course)}</strong>
+        <span class="emdash">—</span>
+        <span class="company">${escapeHtml(edu.school)}</span>
+        ${edu.year ? `<span class="meta">(${escapeHtml(edu.year)})</span>` : ""}
+      </p>`
     )
     .join("");
 
-  const skillGroupsHtml = Object.entries(skillGroups)
-    .map(([type, items]) => {
-      const tags = items
-        .slice(0, 8)
-        .map((skill) => `<span class="tag">${escapeHtml(skill.name)}</span>`)
-        .join("");
-      return `
-      <div class="skill-group">
-        <h3>${escapeHtml(skillTypeLabel(type))}</h3>
-        <div class="tags">${tags}</div>
-      </div>`;
+  const certificationsHtml = (site.certifications || [])
+    .map((cert) => {
+      if (typeof cert === "string") {
+        return `<li>${escapeHtml(cert)}</li>`;
+      }
+      const issuer = cert.issuer ? ` — ${escapeHtml(cert.issuer)}` : "";
+      return `<li><strong>${escapeHtml(cert.name)}</strong>${issuer}</li>`;
     })
     .join("");
 
-  const topSkillsHtml = topSkills
-    .map((skill) => `<span class="tag tag-highlight">${escapeHtml(skill.name)}</span>`)
+  const languagesHtml = (site.languages || [])
+    .map((lang) => {
+      if (typeof lang === "string") {
+        return escapeHtml(lang);
+      }
+      return `<strong>${escapeHtml(lang.name)}</strong> — ${escapeHtml(lang.level)}`;
+    })
+    .join('<span class="sep" aria-hidden="true">|</span>');
+
+  const preferredSkillOrder = ["LANGUAGE", "FRAMEWORK", "DATABASE", "CLOUD", "TOOL", "OTHER"];
+  const skillGroupEntries = Object.entries(skillGroups).sort((a, b) => {
+    const ia = preferredSkillOrder.indexOf(a[0]);
+    const ib = preferredSkillOrder.indexOf(b[0]);
+    return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
+  });
+
+  const skillsHtml = skillGroupEntries
+    .map(([type, items]) => {
+      const names = items.map((skill) => escapeHtml(skill.name)).join(", ");
+      return `<p class="skill-line"><strong>${escapeHtml(skillTypeLabel(type))}:</strong> ${names}</p>`;
+    })
     .join("");
 
   const contributionsHtml = buildContributionsSection(user);
+
+  const certificationsSection = certificationsHtml
+    ? `
+    <section class="section" id="certificacoes">
+      <h2>Certificações</h2>
+      <ul class="plain-list">${certificationsHtml}</ul>
+    </section>`
+    : "";
+
+  const languagesSection = languagesHtml
+    ? `
+    <section class="section" id="idiomas">
+      <h2>Idiomas</h2>
+      <p class="languages">${languagesHtml}</p>
+    </section>`
+    : "";
 
   return `<!DOCTYPE html>
 <html lang="pt-BR">
@@ -261,335 +294,268 @@ function buildHtml(user) {
   <title>${escapeHtml(user.name)} — Currículo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0b0f14;
-      --surface: #121820;
-      --surface-2: #1a2230;
-      --text: #e8edf4;
-      --muted: #9aa7b8;
-      --accent: #3dd6c6;
-      --accent-2: #5b8def;
-      --border: rgba(255, 255, 255, 0.08);
-      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-      --radius: 18px;
-      --max: 1080px;
+      --bg: #ffffff;
+      --text: #1a1a1a;
+      --accent: #2b4c7e;
+      --muted: #555555;
+      --line: #2b4c7e;
+      --max: 820px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: "DM Sans", system-ui, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(61, 214, 198, 0.12), transparent 28%),
-        radial-gradient(circle at top right, rgba(91, 141, 239, 0.12), transparent 24%),
-        var(--bg);
+      font-family: "Source Sans 3", "Segoe UI", sans-serif;
+      background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
-      min-height: 100vh;
+      line-height: 1.45;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
     }
 
-    a { color: var(--accent); text-decoration: none; }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
     a:hover { text-decoration: underline; }
 
-    .container {
-      width: min(calc(100% - 2rem), var(--max));
+    .page {
+      width: min(calc(100% - 2.5rem), var(--max));
       margin: 0 auto;
-      padding: 2.5rem 0 4rem;
+      padding: 2.25rem 0 3.5rem;
     }
 
-    .hero {
-      display: grid;
-      gap: 1.5rem;
-      padding: 2rem;
-      border: 1px solid var(--border);
-      border-radius: calc(var(--radius) + 6px);
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-      box-shadow: var(--shadow);
-      margin-bottom: 2rem;
+    .header {
+      text-align: center;
+      margin-bottom: 1.6rem;
     }
 
-    .eyebrow {
+    .header h1 {
+      font-size: clamp(1.85rem, 4vw, 2.35rem);
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+      margin-bottom: 0.35rem;
+    }
+
+    .header .role {
       color: var(--accent);
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.85rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      font-size: clamp(1rem, 2.4vw, 1.15rem);
+      font-weight: 700;
+      margin-bottom: 0.45rem;
     }
 
-    h1 {
-      font-size: clamp(2.2rem, 5vw, 3.6rem);
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-    }
-
-    .subtitle {
-      font-size: 1.15rem;
+    .header .contacts {
       color: var(--muted);
-      max-width: 52ch;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 1.5rem;
-      align-items: start;
-    }
-
-    .summary {
-      color: #d4dde8;
-      font-size: 1.02rem;
-    }
-
-    .contacts {
-      list-style: none;
-      display: grid;
-      gap: 0.75rem;
-      padding: 1.25rem;
-      border-radius: var(--radius);
-      background: var(--surface);
-      border: 1px solid var(--border);
-    }
-
-    .contacts li {
+      font-size: 0.92rem;
       display: flex;
-      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: center;
       align-items: center;
-      color: var(--muted);
-      word-break: break-word;
+      gap: 0.35rem 0.55rem;
     }
 
-    .contact-icon {
-      width: 2rem;
-      height: 2rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      background: var(--surface-2);
-      color: var(--accent);
-      font-size: 0.85rem;
-      flex-shrink: 0;
+    .header .contacts a { color: var(--muted); }
+    .header .contacts a:hover { color: var(--accent); }
+
+    .sep {
+      color: var(--muted);
+      opacity: 0.7;
+      user-select: none;
     }
 
     .section {
-      margin-top: 2.5rem;
+      margin-top: 1.25rem;
     }
 
-    .section-header {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.25rem;
-    }
-
-    h2 {
-      font-size: 1.35rem;
-      letter-spacing: -0.02em;
-    }
-
-    .section-note {
-      color: var(--muted);
+    .section h2 {
+      color: var(--accent);
       font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding-bottom: 0.28rem;
+      border-bottom: 1.5px solid var(--line);
+      margin-bottom: 0.7rem;
     }
 
-    .top-skills,
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem;
+    .summary {
+      text-align: justify;
+      color: var(--text);
+      font-size: 0.98rem;
     }
 
-    .tag {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.78rem;
-      padding: 0.35rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.03);
-      color: #d7e0ea;
+    .skill-line {
+      margin-bottom: 0.35rem;
+      font-size: 0.97rem;
     }
 
-    .tag-highlight {
-      border-color: rgba(61, 214, 198, 0.35);
-      background: rgba(61, 214, 198, 0.08);
-      color: #b7fff6;
+    .skill-line strong {
+      color: var(--text);
+      font-weight: 700;
     }
 
-    .jobs {
-      display: grid;
-      gap: 1rem;
+    .job {
+      margin-bottom: 0.95rem;
     }
 
-    .job-card,
-    .education-card,
-    .skill-group {
-      padding: 1.25rem 1.35rem;
-      border-radius: var(--radius);
-      background: var(--surface);
-      border: 1px solid var(--border);
+    .job-title {
+      font-size: 0.98rem;
+      margin-bottom: 0.3rem;
+      line-height: 1.4;
     }
 
-    .job-header {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1rem;
+    .job-title strong {
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .emdash {
+      margin: 0 0.2rem;
+      color: var(--text);
     }
 
     .company {
-      font-size: 1.1rem;
-      margin-bottom: 0.2rem;
-    }
-
-    .position {
-      color: var(--accent-2);
-      font-weight: 500;
-    }
-
-    .job-meta {
-      text-align: right;
-      color: var(--muted);
-      font-size: 0.92rem;
-      display: grid;
-      gap: 0.2rem;
-      min-width: 11rem;
-    }
-
-    .projects {
-      list-style: none;
-      display: grid;
-      gap: 0.9rem;
-    }
-
-    .project-desc {
-      margin-bottom: 0.55rem;
-      color: #d7dee8;
-    }
-
-    .skills-grid,
-    .education-grid {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .skills-grid {
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    }
-
-    .education-grid {
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    }
-
-    .skill-group h3,
-    .education-card h3 {
-      font-size: 0.95rem;
-      margin-bottom: 0.75rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
+      color: var(--accent);
       font-weight: 600;
     }
 
-    .education-card p {
-      margin-bottom: 0.4rem;
-    }
-
-    .edu-year {
+    .meta {
       color: var(--muted);
-      font-size: 0.92rem;
+      font-style: italic;
+      font-weight: 400;
+      margin-left: 0.35rem;
+      white-space: nowrap;
     }
 
-    .contributions-card {
-      padding: 1.25rem;
-      border-radius: var(--radius);
-      background: var(--surface);
-      border: 1px solid var(--border);
-      overflow-x: auto;
+    .bullets {
+      list-style: none;
+      display: grid;
+      gap: 0.22rem;
+      padding-left: 0.15rem;
     }
 
-    .contributions-card a {
-      display: block;
-      width: fit-content;
-      margin: 0 auto;
+    .bullets li {
+      position: relative;
+      padding-left: 1rem;
+      font-size: 0.95rem;
+      text-align: justify;
+    }
+
+    .bullets li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: var(--text);
+    }
+
+    .job-stack {
+      margin-top: 0.35rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .job-stack strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .edu-item {
+      margin-bottom: 0.35rem;
+      font-size: 0.97rem;
+    }
+
+    .plain-list {
+      list-style: none;
+      display: grid;
+      gap: 0.25rem;
+    }
+
+    .plain-list li {
+      font-size: 0.97rem;
+    }
+
+    .languages {
+      font-size: 0.97rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 0.55rem;
+      align-items: center;
+    }
+
+    .contributions {
+      text-align: center;
     }
 
     .contributions-chart {
       display: block;
       max-width: 100%;
       height: auto;
-      border-radius: 8px;
+      margin: 0 auto;
     }
 
-    @media (max-width: 800px) {
-      .hero-grid,
-      .job-header {
-        grid-template-columns: 1fr;
-        display: grid;
-      }
+    .contrib-note {
+      margin-top: 0.45rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
 
-      .job-meta {
-        text-align: left;
-      }
+    @media (max-width: 640px) {
+      body { font-size: 14.5px; }
+      .page { width: min(calc(100% - 1.5rem), var(--max)); padding-top: 1.5rem; }
+      .meta { white-space: normal; display: inline; }
+      .summary, .bullets li { text-align: left; }
     }
 
     @media print {
-      body { background: white; color: #111; }
-      .hero, .job-card, .education-card, .skill-group, .contacts, .contributions-card {
-        box-shadow: none;
-        background: white;
-        border-color: #ddd;
-      }
-      a { color: #111; text-decoration: none; }
-      .tag, .tag-highlight { border-color: #ccc; color: #333; background: #f7f7f7; }
+      body { font-size: 11pt; }
+      .page { width: 100%; max-width: none; padding: 0; }
+      .contributions { display: none; }
+      a { color: inherit; text-decoration: none; }
+      .header .contacts a { color: var(--muted); }
     }
   </style>
 </head>
 <body>
-  <main class="container">
-    <section class="hero">
-      <div class="eyebrow">Currículo online</div>
+  <main class="page">
+    <header class="header">
       <h1>${escapeHtml(user.name)}</h1>
-      <p class="subtitle">${escapeHtml(site.title)} · ${escapeHtml(site.location)}</p>
+      <p class="role">${escapeHtml(site.title)}</p>
+      <div class="contacts">${contactsHtml}</div>
+    </header>
 
-      <div class="hero-grid">
-        <p class="summary">${escapeHtml(site.summary)}</p>
-        <ul class="contacts">
-          ${contactsHtml}
-        </ul>
-      </div>
+    <section class="section" id="resumo">
+      <h2>Resumo profissional</h2>
+      <p class="summary">${escapeHtml(site.summary)}</p>
+    </section>
 
-      <div class="top-skills" aria-label="Principais tecnologias">
-        ${topSkillsHtml}
-      </div>
+    <section class="section" id="competencias">
+      <h2>Competências técnicas</h2>
+      ${skillsHtml}
     </section>
 
     <section class="section" id="experiencia">
-      <div class="section-header">
-        <h2>Experiência profissional</h2>
-        <span class="section-note">${jobs.length} empresas</span>
-      </div>
-      <div class="jobs">${jobsHtml}</div>
+      <h2>Experiência profissional</h2>
+      ${jobsHtml}
     </section>
 
-    <section class="section" id="skills">
-      <div class="section-header">
-        <h2>Stack técnica</h2>
-        <span class="section-note">por tempo de experiência</span>
-      </div>
-      <div class="skills-grid">${skillGroupsHtml}</div>
-    </section>
+    ${
+      educationHtml
+        ? `<section class="section" id="formacao">
+      <h2>Formação</h2>
+      ${educationHtml}
+    </section>`
+        : ""
+    }
 
+    ${certificationsSection}
+    ${languagesSection}
     ${contributionsHtml}
-
-    <section class="section" id="formacao">
-      <div class="section-header">
-        <h2>Formação acadêmica</h2>
-      </div>
-      <div class="education-grid">${educationHtml}</div>
-    </section>
   </main>
 </body>
 </html>`;
