@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Currículo de Emerson Figueira — Java Senior | Especialista Backend">
   <title>Emerson Figueira — Currículo</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #ffffff;
@@ -16,12 +13,14 @@
       --muted: #555555;
       --line: #2b4c7e;
       --max: 820px;
+      /* Fontes de sistema: PDF sem Type 3 (melhor para parsers ATS) */
+      --font: Arial, Helvetica, "DejaVu Sans", "Liberation Sans", sans-serif;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: "Source Sans 3", "Segoe UI", sans-serif;
+      font-family: var(--font);
       background: var(--bg);
       color: var(--text);
       line-height: 1.45;
@@ -114,12 +113,20 @@
     }
 
     .job {
-      margin-bottom: 0.95rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1.05rem;
+      border-bottom: 1.5px solid var(--accent);
+    }
+
+    .job:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
     }
 
     .job-title {
-      font-size: 0.98rem;
-      margin-bottom: 0.3rem;
+      font-size: 1.02rem;
+      margin-bottom: 0.35rem;
       line-height: 1.4;
     }
 
@@ -135,7 +142,7 @@
 
     .company {
       color: var(--accent);
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .meta {
@@ -265,10 +272,14 @@
     @media print {
       @page {
         size: A4;
-        margin: 14mm 12mm 22mm 12mm;
+        margin: 10mm 11mm 11mm 11mm;
       }
 
-      body { font-size: 11pt; }
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 10.25pt;
+        line-height: 1.32;
+      }
 
       .page {
         width: 100%;
@@ -284,24 +295,26 @@
       .header .contacts a { color: var(--muted); }
       .company { color: var(--accent); }
 
-      .job,
-      .edu-item,
-      .bullets li,
-      .skill-line,
-      .job-stack {
-        break-inside: avoid;
-        page-break-inside: avoid;
+      .header { margin-bottom: 0.9rem; }
+      .section { margin-top: 0.75rem; }
+      .section h2 {
+        margin-bottom: 0.4rem;
+        padding-bottom: 0.2rem;
       }
-
       .job {
-        orphans: 3;
-        widows: 3;
+        margin-bottom: 0.95rem;
+        padding-bottom: 0.8rem;
+        border-bottom: 1.5px solid var(--accent);
       }
-
-      p, li {
-        orphans: 2;
-        widows: 2;
+      .job:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
       }
+      .job-title { margin-bottom: 0.2rem; }
+      .bullets { gap: 0.12rem; }
+      .job-stack { margin-top: 0.2rem; }
+      .skill-line { margin-bottom: 0.2rem; }
     }
   </style>
 </head>
@@ -314,7 +327,7 @@
     <header class="header">
       <h1>Emerson Figueira</h1>
       <p class="role">Java Senior | Especialista Backend</p>
-      <div class="contacts"><span>Chapecó, SC — Brasil</span><span class="sep" aria-hidden="true">|</span><a href="mailto:eafigueira@gmail.com">eafigueira@gmail.com</a><span class="sep" aria-hidden="true">|</span><a href="https://x.com/eafigueira" target="_blank" rel="noopener noreferrer">@eafigueira</a><span class="sep" aria-hidden="true">|</span><a href="https://github.com/eafigueira" target="_blank" rel="noopener noreferrer">github.com/eafigueira</a><span class="sep" aria-hidden="true">|</span><a href="https://eafigueira.github.io/curriculo/" target="_blank" rel="noopener noreferrer">eafigueira.github.io/curriculo</a></div>
+      <div class="contacts"><span>Chapecó, SC — Brasil</span><span class="sep" aria-hidden="true">|</span><a href="mailto:eafigueira@gmail.com">eafigueira@gmail.com</a><span class="sep" aria-hidden="true">|</span><a href="tel:47991667586">(47) 991667586</a><span class="sep" aria-hidden="true">|</span><a href="https://x.com/eafigueira" target="_blank" rel="noopener noreferrer">@eafigueira</a><span class="sep" aria-hidden="true">|</span><a href="https://github.com/eafigueira" target="_blank" rel="noopener noreferrer">github.com/eafigueira</a><span class="sep" aria-hidden="true">|</span><a href="https://eafigueira.github.io/curriculo/" target="_blank" rel="noopener noreferrer">eafigueira.github.io/curriculo</a></div>
     </header>
 
     <section class="section" id="resumo">
@@ -324,7 +337,7 @@
 
     <section class="section" id="competencias">
       <h2>Competências técnicas</h2>
-      <p class="skill-line"><strong>Linguagens:</strong> SQL, JAVA, JAVASCRIPT, DELPHI, PICK-BASIC, DATAFLEX, AS3, KOTLIN</p><p class="skill-line"><strong>Frameworks:</strong> SPRING-BOOT, NESTJS, REACT, QUARKUS</p><p class="skill-line"><strong>Bancos de dados:</strong> MYSQL, ORACLE, DYNAMODB, POSTGRES, SQLSERVER, FIREBIRD, UNIDATA</p><p class="skill-line"><strong>Cloud:</strong> AWS, GCP</p><p class="skill-line"><strong>Ferramentas &amp; Infra:</strong> KUBERNETES, AWS-SQS, RABBITMQ, REDIS, JENKINS, KAFKA</p><p class="skill-line"><strong>Outros:</strong> MICROSERVICES</p>
+      <p class="skill-line"><strong>Linguagens:</strong> SQL, Java, JavaScript, Kotlin, Delphi, Pick Basic, DataFlex, ActionScript 3</p><p class="skill-line"><strong>Frameworks:</strong> Spring Boot, NestJS, React, Quarkus</p><p class="skill-line"><strong>Bancos de dados:</strong> MySQL, Oracle, PostgreSQL, DynamoDB, SQL Server, Firebird, UniData</p><p class="skill-line"><strong>Cloud:</strong> GCP, AWS</p><p class="skill-line"><strong>Ferramentas &amp; Infra:</strong> Kubernetes, AWS SQS, RabbitMQ, Redis, Jenkins, Kafka</p><p class="skill-line"><strong>Outros:</strong> Microservices</p>
     </section>
 
     <section class="section" id="experiencia">
@@ -333,14 +346,26 @@
       <article class="job">
         <header class="job-header">
           <p class="job-title">
+            <strong>Backend Specialist</strong>
+            <span class="emdash">—</span>
+            <span class="company">MAITHA TEC</span>
+            <span class="meta">03/2026 – Atual</span>
+          </p>
+        </header>
+        <ul class="bullets"><li>Desenvolvimento de microsserviços com Spring Boot e Kotlin, aplicando arquitetura hexagonal, persistência em PostgreSQL e implantação em GCP.</li></ul>
+        <p class="job-stack"><strong>Stack:</strong> Kotlin, Spring Boot, Microservices, PostgreSQL, GCP, SQL</p>
+      </article>
+      <article class="job">
+        <header class="job-header">
+          <p class="job-title">
             <strong>Java/Node Specialist</strong>
             <span class="emdash">—</span>
             <span class="company">SENSEDIA S.A.</span>
-            <span class="meta">03/2022 – Atual | Campinas</span>
+            <span class="meta">03/2022 – 03/2026 | Campinas</span>
           </p>
         </header>
         <ul class="bullets"><li>Atua como Especialista Técnico em squad de alta performance, arquitetando um motor de decisão de crédito e processamento de pagamentos que suporta milhares de requisições simultâneas. Projetou a solução utilizando microsserviços híbridos (Java/Node.js) com RabbitMQ para orquestração assíncrona e Oracle para consistência transacional, garantindo baixa latência e integração resiliente com múltiplos ecossistemas bancários.</li><li>Engenherou sistema crítico de pagamentos instantâneos (PIX) e boletos, implementando arquitetura de microsserviços escalável com NestJS e Kubernetes para suportar alto volume transacional.</li><li>Orquestrou middleware de pagamentos complexo utilizando Spring Boot e AWS SQS, otimizando o throughput de transações e garantindo a resiliência via arquitetura orientada a eventos.</li><li>Implementou checkout transparente seguro para e-wallets, integrando DynamoDB para persistência de alta performance e elevando as taxas de conversão de pagamentos.</li><li>Desenvolveu APIs de Open Insurance em conformidade com regulações, criando interfaces seguras e monitoráveis via Jenkins para compartilhamento de dados sensíveis.</li><li>Automatizou o fluxo de solicitação de equipamentos POS integrando sistemas legados Oracle com microsserviços Node.js, reduzindo o tempo operacional de provisionamento.</li></ul>
-        <p class="job-stack"><strong>Stack:</strong> JAVA, JAVASCRIPT, MICROSERVICES, RABBITMQ, ORACLE, REDIS, KUBERNETES, SQL, NESTJS, POSTGRES, SPRING-BOOT, MYSQL, AWS, AWS-SQS, DYNAMODB, SQLSERVER, JENKINS</p>
+        <p class="job-stack"><strong>Stack:</strong> Java, JavaScript, Microservices, RabbitMQ, Oracle, Redis, Kubernetes, SQL, NestJS, PostgreSQL, Kotlin, Spring Boot, MySQL, AWS, AWS SQS, DynamoDB, SQL Server, Jenkins</p>
       </article>
       <article class="job">
         <header class="job-header">
@@ -352,7 +377,7 @@
           </p>
         </header>
         <ul class="bullets"><li>Executou a migração estratégica de 60 milhões de registros de clientes, desenhando pipelines de dados resilientes com Kafka e Spring Boot para garantir integridade e zero downtime.</li><li>Desenvolveu plataforma de integração logística rodoviária/ferroviária usando Kotlin e GCP, otimizando a sincronização de dados em tempo real entre operadores.</li></ul>
-        <p class="job-stack"><strong>Stack:</strong> JAVA, SPRING-BOOT, POSTGRES, AWS, AWS-SQS, KAFKA, KOTLIN, GCP, SQL</p>
+        <p class="job-stack"><strong>Stack:</strong> Java, Spring Boot, PostgreSQL, AWS, AWS SQS, Kafka, Kotlin, GCP, SQL</p>
       </article>
       <article class="job">
         <header class="job-header">
@@ -364,7 +389,7 @@
           </p>
         </header>
         <ul class="bullets"><li>Implementou módulo de pagamentos PIX utilizando Quarkus (Native), focando em baixo footprint de memória e alta velocidade de inicialização.</li></ul>
-        <p class="job-stack"><strong>Stack:</strong> JAVA, QUARKUS, MYSQL, SQL</p>
+        <p class="job-stack"><strong>Stack:</strong> Java, Quarkus, MySQL, SQL</p>
       </article>
       <article class="job">
         <header class="job-header">
@@ -376,7 +401,7 @@
           </p>
         </header>
         <ul class="bullets"><li>Liderou a arquitetura e desenvolvimento de plataforma SaaS para gestão de prontuários médicos, utilizando React e GCP para entregar uma solução escalável e segura.</li><li>Dirigiu o desenvolvimento full-stack de CRM especializado para Telecom, definindo stack tecnológica e processos de deploy na nuvem.</li></ul>
-        <p class="job-stack"><strong>Stack:</strong> JAVA, JAVASCRIPT, REACT, GCP, MYSQL, SQL</p>
+        <p class="job-stack"><strong>Stack:</strong> Java, JavaScript, React, GCP, MySQL, SQL</p>
       </article>
       <article class="job">
         <header class="job-header">
@@ -388,7 +413,7 @@
           </p>
         </header>
         <ul class="bullets"><li>Modernizou ecossistema hospitalar integrando bases Oracle legadas com novas interfaces Java/Node.js, aumentando a eficiência operacional das equipes médicas.</li></ul>
-        <p class="job-stack"><strong>Stack:</strong> ORACLE, JAVA, JAVASCRIPT, SQL</p>
+        <p class="job-stack"><strong>Stack:</strong> Oracle, Java, JavaScript, SQL</p>
       </article>
       <article class="job">
         <header class="job-header">
@@ -400,7 +425,7 @@
           </p>
         </header>
         <ul class="bullets"><li>Desenvolveu e implantou CRM customizado para Telecom, utilizando ActionScript 3 para interfaces ricas e Java para backend robusto.</li></ul>
-        <p class="job-stack"><strong>Stack:</strong> JAVA, AS3, MYSQL, SQL</p>
+        <p class="job-stack"><strong>Stack:</strong> Java, ActionScript 3, MySQL, SQL</p>
       </article>
       <article class="job">
         <header class="job-header">
@@ -412,7 +437,7 @@
           </p>
         </header>
         <ul class="bullets"><li>Otimizou ERP varejista utilizando DataFlex e Postgres, melhorando a performance de queries críticas para operações de vendas.</li></ul>
-        <p class="job-stack"><strong>Stack:</strong> DATAFLEX, POSTGRES, SQL</p>
+        <p class="job-stack"><strong>Stack:</strong> DataFlex, PostgreSQL, SQL</p>
       </article>
       <article class="job">
         <header class="job-header">
@@ -424,7 +449,7 @@
           </p>
         </header>
         <ul class="bullets"><li>Desenvolveu sistema de gestão para food-service com Delphi, focando em estabilidade e resposta rápida para frentes de caixa.</li></ul>
-        <p class="job-stack"><strong>Stack:</strong> DELPHI, SQLSERVER, SQL</p>
+        <p class="job-stack"><strong>Stack:</strong> Delphi, SQL Server, SQL</p>
       </article>
       <article class="job">
         <header class="job-header">
@@ -436,7 +461,7 @@
           </p>
         </header>
         <ul class="bullets"><li>Coordenou o ciclo de vida completo de desenvolvimento de software hospitalar, migrando processos manuais para sistema integrado Delphi/Firebird.</li></ul>
-        <p class="job-stack"><strong>Stack:</strong> DELPHI, FIREBIRD, MYSQL, JAVA, SQL</p>
+        <p class="job-stack"><strong>Stack:</strong> Delphi, Firebird, MySQL, Java, SQL</p>
       </article>
       <article class="job">
         <header class="job-header">
@@ -448,7 +473,7 @@
           </p>
         </header>
         <ul class="bullets"><li>Codificou módulos essenciais para sistema de RH em Delphi, garantindo cálculo preciso de folhas de pagamento.</li></ul>
-        <p class="job-stack"><strong>Stack:</strong> DELPHI, FIREBIRD, SQL</p>
+        <p class="job-stack"><strong>Stack:</strong> Delphi, Firebird, SQL</p>
       </article>
       <article class="job">
         <header class="job-header">
@@ -460,7 +485,7 @@
           </p>
         </header>
         <ul class="bullets"><li>Manutenção e correção de sistemas legados em ambiente industrial, garantindo a continuidade das operações de fábrica.</li></ul>
-        <p class="job-stack"><strong>Stack:</strong> PICK-BASIC, UNIDATA</p>
+        <p class="job-stack"><strong>Stack:</strong> Pick Basic, UniData</p>
       </article>
     </section>
 

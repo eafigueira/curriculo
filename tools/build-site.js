@@ -70,12 +70,54 @@ function summarizeHardSkills(jobs) {
       const meta = stackTypes.find((s) => s.name === name);
       return {
         name,
+        label: meta?.label || stackLabelFallback(name),
         type: meta?.type || "OTHER",
         months,
         years: Math.round((months / timeTotalWorking) * (timeTotalWorking / 12) * 10) / 10,
       };
     })
     .sort((a, b) => b.months - a.months);
+}
+
+/** Nomes legíveis para ATS (Spring Boot em vez de SPRING-BOOT). */
+function stackLabelFallback(name) {
+  const fallbacks = {
+    JAVA: "Java",
+    JAVASCRIPT: "JavaScript",
+    "SPRING-BOOT": "Spring Boot",
+    NESTJS: "NestJS",
+    KOTLIN: "Kotlin",
+    QUARKUS: "Quarkus",
+    REACT: "React",
+    POSTGRES: "PostgreSQL",
+    MYSQL: "MySQL",
+    ORACLE: "Oracle",
+    DYNAMODB: "DynamoDB",
+    SQLSERVER: "SQL Server",
+    AWS: "AWS",
+    "AWS-SQS": "AWS SQS",
+    GCP: "GCP",
+    KUBERNETES: "Kubernetes",
+    KAFKA: "Kafka",
+    RABBITMQ: "RabbitMQ",
+    REDIS: "Redis",
+    JENKINS: "Jenkins",
+    MICROSERVICES: "Microservices",
+    SQL: "SQL",
+    DELPHI: "Delphi",
+    FIREBIRD: "Firebird",
+    DATAFLEX: "DataFlex",
+    "PICK-BASIC": "Pick Basic",
+    UNIDATA: "UniData",
+    AS3: "ActionScript 3",
+  };
+  return fallbacks[name] || name;
+}
+
+function stackLabel(name) {
+  const stackTypes = assets.find((a) => a.type === "stacks")?.data || [];
+  const meta = stackTypes.find((s) => s.name === name);
+  return meta?.label || stackLabelFallback(name);
 }
 
 function escapeHtml(value) {
@@ -212,7 +254,7 @@ function buildHtml(user) {
       const stackSet = [...new Set(job.projects.flatMap((p) => p.stack || []))];
       const stackLine =
         stackSet.length > 0
-          ? `<p class="job-stack"><strong>Stack:</strong> ${stackSet.map(escapeHtml).join(", ")}</p>`
+          ? `<p class="job-stack"><strong>Stack:</strong> ${stackSet.map((s) => escapeHtml(stackLabel(s))).join(", ")}</p>`
           : "";
 
       return `
@@ -271,7 +313,7 @@ function buildHtml(user) {
 
   const skillsHtml = skillGroupEntries
     .map(([type, items]) => {
-      const names = items.map((skill) => escapeHtml(skill.name)).join(", ");
+      const names = items.map((skill) => escapeHtml(skill.label || stackLabel(skill.name))).join(", ");
       return `<p class="skill-line"><strong>${escapeHtml(skillTypeLabel(type))}:</strong> ${names}</p>`;
     })
     .join("");
@@ -301,9 +343,6 @@ function buildHtml(user) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Currículo de ${escapeHtml(user.name)} — ${escapeHtml(site.title)}">
   <title>${escapeHtml(user.name)} — Currículo</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #ffffff;
@@ -312,12 +351,14 @@ function buildHtml(user) {
       --muted: #555555;
       --line: #2b4c7e;
       --max: 820px;
+      /* Fontes de sistema: PDF sem Type 3 (melhor para parsers ATS) */
+      --font: Arial, Helvetica, "DejaVu Sans", "Liberation Sans", sans-serif;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: "Source Sans 3", "Segoe UI", sans-serif;
+      font-family: var(--font);
       background: var(--bg);
       color: var(--text);
       line-height: 1.45;
@@ -410,12 +451,20 @@ function buildHtml(user) {
     }
 
     .job {
-      margin-bottom: 0.95rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1.05rem;
+      border-bottom: 1.5px solid var(--accent);
+    }
+
+    .job:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
     }
 
     .job-title {
-      font-size: 0.98rem;
-      margin-bottom: 0.3rem;
+      font-size: 1.02rem;
+      margin-bottom: 0.35rem;
       line-height: 1.4;
     }
 
@@ -431,7 +480,7 @@ function buildHtml(user) {
 
     .company {
       color: var(--accent);
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .meta {
@@ -561,10 +610,14 @@ function buildHtml(user) {
     @media print {
       @page {
         size: A4;
-        margin: 14mm 12mm 22mm 12mm;
+        margin: 10mm 11mm 11mm 11mm;
       }
 
-      body { font-size: 11pt; }
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 10.25pt;
+        line-height: 1.32;
+      }
 
       .page {
         width: 100%;
@@ -580,24 +633,26 @@ function buildHtml(user) {
       .header .contacts a { color: var(--muted); }
       .company { color: var(--accent); }
 
-      .job,
-      .edu-item,
-      .bullets li,
-      .skill-line,
-      .job-stack {
-        break-inside: avoid;
-        page-break-inside: avoid;
+      .header { margin-bottom: 0.9rem; }
+      .section { margin-top: 0.75rem; }
+      .section h2 {
+        margin-bottom: 0.4rem;
+        padding-bottom: 0.2rem;
       }
-
       .job {
-        orphans: 3;
-        widows: 3;
+        margin-bottom: 0.95rem;
+        padding-bottom: 0.8rem;
+        border-bottom: 1.5px solid var(--accent);
       }
-
-      p, li {
-        orphans: 2;
-        widows: 2;
+      .job:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
       }
+      .job-title { margin-bottom: 0.2rem; }
+      .bullets { gap: 0.12rem; }
+      .job-stack { margin-top: 0.2rem; }
+      .skill-line { margin-bottom: 0.2rem; }
     }
   </style>
 </head>
@@ -688,7 +743,6 @@ function buildPdf(htmlPath, pdfPath) {
       "--headless=new",
       "--disable-gpu",
       "--no-pdf-header-footer",
-      "--no-margins",
       `--print-to-pdf=${pdfPath}`,
       "--run-all-compositor-stages-before-draw",
       "--virtual-time-budget=8000",

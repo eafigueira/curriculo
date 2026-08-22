@@ -2,114 +2,34 @@
     {
         "type": "stacks",
         "data": [
-            {
-                "name": "PICK-BASIC",
-                "type": "LANGUAGE"
-            },
-            {
-                "name": "UNIDATA",
-                "type": "DATABASE"
-            },
-            {
-                "name": "JAVASCRIPT",
-                "type": "LANGUAGE"
-            },
-            {
-                "name": "NESTJS",
-                "type": "FRAMEWORK"
-            },
-            {
-                "name": "KUBERNETES",
-                "type": "TOOL"
-            },
-            {
-                "name": "REDIS",
-                "type": "TOOL"
-            },
-            {
-                "name": "RABBITMQ",
-                "type": "TOOL"
-            },
-            {
-                "name": "POSTGRES",
-                "type": "DATABASE"
-            },
-            {
-                "name": "JAVA",
-                "type": "LANGUAGE"
-            },
-            {
-                "name": "SPRING-BOOT",
-                "type": "FRAMEWORK"
-            },
-            {
-                "name": "QUARKUS",
-                "type": "FRAMEWORK"
-            },
-            {
-                "name": "MYSQL",
-                "type": "DATABASE"
-            },
-            {
-                "name": "AWS",
-                "type": "CLOUD"
-            },
-            {
-                "name": "AWS-SQS",
-                "type": "TOOL"
-            },
-            {
-                "name": "DYNAMODB",
-                "type": "DATABASE"
-            },
-            {
-                "name": "SQLSERVER",
-                "type": "DATABASE"
-            },
-            {
-                "name": "JENKINS",
-                "type": "TOOL"
-            },
-            {
-                "name": "ORACLE",
-                "type": "DATABASE"
-            },
-            {
-                "name": "KOTLIN",
-                "type": "LANGUAGE"
-            },
-            {
-                "name": "GCP",
-                "type": "CLOUD"
-            },
-            {
-                "name": "KAFKA",
-                "type": "TOOL"
-            },
-            {
-                "name": "DATAFLEX",
-                "type": "LANGUAGE"
-            },
-            {
-                "name": "REACT",
-                "type": "FRAMEWORK"
-            },
-            {
-                "name": "DELPHI",
-                "type": "LANGUAGE"
-            },
-            {
-                "name": "FIREBIRD",
-                "type": "DATABASE"
-            },
-            {
-                "name": "AS3",
-                "type": "LANGUAGE"
-            },
-            {
-                "name": "SQL",
-                "type" : "LANGUAGE"
-            }
+            { "name": "PICK-BASIC", "label": "Pick Basic", "type": "LANGUAGE" },
+            { "name": "UNIDATA", "label": "UniData", "type": "DATABASE" },
+            { "name": "JAVASCRIPT", "label": "JavaScript", "type": "LANGUAGE" },
+            { "name": "NESTJS", "label": "NestJS", "type": "FRAMEWORK" },
+            { "name": "KUBERNETES", "label": "Kubernetes", "type": "TOOL" },
+            { "name": "REDIS", "label": "Redis", "type": "TOOL" },
+            { "name": "RABBITMQ", "label": "RabbitMQ", "type": "TOOL" },
+            { "name": "POSTGRES", "label": "PostgreSQL", "type": "DATABASE" },
+            { "name": "JAVA", "label": "Java", "type": "LANGUAGE" },
+            { "name": "SPRING-BOOT", "label": "Spring Boot", "type": "FRAMEWORK" },
+            { "name": "QUARKUS", "label": "Quarkus", "type": "FRAMEWORK" },
+            { "name": "MYSQL", "label": "MySQL", "type": "DATABASE" },
+            { "name": "AWS", "label": "AWS", "type": "CLOUD" },
+            { "name": "AWS-SQS", "label": "AWS SQS", "type": "TOOL" },
+            { "name": "DYNAMODB", "label": "DynamoDB", "type": "DATABASE" },
+            { "name": "SQLSERVER", "label": "SQL Server", "type": "DATABASE" },
+            { "name": "JENKINS", "label": "Jenkins", "type": "TOOL" },
+            { "name": "ORACLE", "label": "Oracle", "type": "DATABASE" },
+            { "name": "KOTLIN", "label": "Kotlin", "type": "LANGUAGE" },
+            { "name": "GCP", "label": "GCP", "type": "CLOUD" },
+            { "name": "KAFKA", "label": "Kafka", "type": "TOOL" },
+            { "name": "DATAFLEX", "label": "DataFlex", "type": "LANGUAGE" },
+            { "name": "REACT", "label": "React", "type": "FRAMEWORK" },
+            { "name": "DELPHI", "label": "Delphi", "type": "LANGUAGE" },
+            { "name": "FIREBIRD", "label": "Firebird", "type": "DATABASE" },
+            { "name": "AS3", "label": "ActionScript 3", "type": "LANGUAGE" },
+            { "name": "SQL", "label": "SQL", "type": "LANGUAGE" },
+            { "name": "MICROSERVICES", "label": "Microservices", "type": "OTHER" }
         ]
     },
     {
