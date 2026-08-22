@@ -22,35 +22,11 @@
         ],
         "jobs": [
             {
-                "company": "MAITHA TEC",
-                "position": "Backend Specialist",
-                "period": [
-                    {
-                        "startDate": "03/2026"
-                    }
-                ],
-                "city": "",
-                "projects": [
-                    {
-                        "description": "Desenvolvimento de microsserviços com Spring Boot e Kotlin, aplicando arquitetura hexagonal, persistência em PostgreSQL e implantação em GCP.",
-                        "stack": [
-                            "KOTLIN",
-                            "SPRING-BOOT",
-                            "MICROSERVICES",
-                            "POSTGRES",
-                            "GCP",
-                            "SQL"
-                        ]
-                    }
-                ]
-            },
-            {
                 "company": "SENSEDIA S.A.",
                 "position": "Java/Node Specialist",
                 "period": [
                     {
-                        "startDate": "03/2022",
-                        "endDate": "03/2026"
+                        "startDate": "03/2022"
                     }
                 ],
                 "city": "Campinas",
